@@ -1,0 +1,18 @@
+{
+  "name": "driver-workbench",
+  "version": "1.0.0",
+  "description": "移动端司导 AI 工作台交互原型",
+  "main": "index.js",
+  "scripts": {
+    "start": "python3 -m http.server 5173 --directory dist",
+    "check": "node --check dist/app.js && node --check dist/profile.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@phosphor-icons/core": "^2.1.1"
+  },
+  "private": true
+}
