@@ -1,0 +1,96 @@
+/* Scoped adapters: no overrides on the task home or business pages. */
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) {
+  --accent: var(--ai-brand);
+  --surface: var(--ai-canvas);
+  color: var(--ai-ink);
+}
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) :is(.new-task, .contact-send, .chat-task-actions button, .flow-next),
+.voice-dialog .voice-ack {
+  border-radius: var(--ai-radius-pill); background: var(--ai-brand);
+  color: var(--ai-brand-ink); box-shadow: var(--ai-shadow-action); font-weight: 600;
+}
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) :is(button, a, input:not(#input), textarea):focus-visible,
+.voice-dialog button:focus-visible {
+  outline: 2px solid var(--ai-link); outline-offset: 3px;
+}
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) .composer {
+  border: 1px solid var(--ai-border); border-radius: var(--ai-radius-pill);
+  background: var(--ai-white); box-shadow: var(--ai-shadow-card);
+}
+
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) .composer input::placeholder { color: var(--ai-muted); }
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) .composer .send { background: var(--ai-brand); box-shadow: none; }
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) .composer .send img { filter: brightness(0) invert(1); }
+.phone.ai-mode footer nav {
+  border-color: var(--ai-border); background: var(--ai-glass);
+  box-shadow: var(--ai-shadow-float); backdrop-filter: blur(12px);
+}
+.phone footer nav .nav-item.selected,
+.phone.home-design footer nav #home.selected { background: #f6f7f9; box-shadow: none; }
+.phone.ai-mode footer nav .nav-item.selected::after { animation: none; }
+.phone.ai-mode .history-type-tabs { background: var(--ai-canvas); }
+.phone.ai-mode .history-type-tabs [aria-selected="true"] { background: var(--ai-selected); color: var(--ai-link); box-shadow: none; }
+.phone.ai-mode :is(.history-copy small, .history-empty, .history-type-tag) { color: var(--ai-muted); }
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) button:disabled { box-shadow: none; }
+@media (prefers-reduced-transparency: reduce) {
+  .phone.ai-mode footer nav { background: var(--ai-white); backdrop-filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phone:is(.ai-mode, .conversation-page, .task-chat-sheet) *,
+  .phone:is(.ai-mode, .conversation-page, .task-chat-sheet) *::before,
+  .phone:is(.ai-mode, .conversation-page, .task-chat-sheet) *::after,
+  .voice-dialog *, .voice-dialog *::before, .voice-dialog *::after {
+    animation: none !important; transition: none !important; scroll-behavior: auto !important;
+  }
+}
+
+.phone #composer #input:focus, .phone #composer #input:focus-visible { outline:none; box-shadow:none; }
+
+/* Match the tourist ConversationComposer: one line pill, up to three lines. */
+.phone #composer {
+  height:auto; min-height:48px; padding:8px; gap:6px;
+  align-items:center; border:0; border-radius:999px; background:#fff;
+  box-shadow:0 6px 24px rgb(114 134 255 / 14%), 0 2px 8px rgb(64 70 110 / 6%);
+}
+.phone #composer.multiline { align-items:flex-end; border-radius:16px; }
+.phone #composer #input {
+  display:block; width:0; flex:1; min-width:0; height:28.4px; max-height:73.2px;
+  padding:3px 0; border:0; border-radius:0; resize:none; background:transparent;
+  font:inherit; font-size:14px; line-height:1.6; color:var(--ai-ink,#282b38); overflow-y:hidden;
+}
+.phone #composer #input::placeholder { color:#9ca3b2; opacity:1; font-size:inherit; }
+.phone #composer .icon-button { width:32px; height:34px; padding:0; margin:0; }
+.phone #composer .icon-button img { width:22px; height:22px; }
+.phone #composer .send { width:34px; height:34px; background:#7286ff; box-shadow:none; }
+.phone #composer .send img { width:19px; height:19px; filter:brightness(0) invert(1); }
+
+/* Incremental replies grow without restarting bubble entrances or smooth-scroll lag. */
+.phone :is(#messages, #ai-page .messages) .message { animation:none; }
+.phone:is(.conversation-page, .ai-mode, .task-chat-sheet) :is(.workspace, .messages) { scroll-behavior:auto; }
+
+/* Task search results in the AI conversation. */
+#ai-page .chat-task-result {
+  padding:16px; margin:0 0 8px; min-width:0; border:1px solid var(--ai-border);
+  border-radius:20px; background:var(--ai-white); box-shadow:var(--ai-shadow-card);
+  color:var(--ai-ink); white-space:normal;
+}
+.chat-task-result-head { display:flex; align-items:center; gap:9px; }
+.chat-task-result-icon { display:grid; place-items:center; width:32px; height:32px; flex-shrink:0; border-radius:10px; background:var(--ai-selected); }
+.chat-task-result-icon::before { content:""; width:19px; height:19px; background:#7286FF; mask:url("../icons/clipboard-text-fill.svg") center / contain no-repeat; -webkit-mask:url("../icons/clipboard-text-fill.svg") center / contain no-repeat; }
+.chat-task-result-head h3 { flex:1; margin:0; font-size:15px; line-height:1.5; font-weight:600; }
+.chat-task-result-status { flex-shrink:0; padding:4px 8px; border-radius:8px; background:#edf6f1; color:#37765b; font-size:11px; line-height:1.4; }
+.chat-task-result-details { margin-top:14px; padding:12px; border-radius:14px; background:var(--ai-soft); }
+.chat-task-result-date { display:flex; align-items:center; gap:9px; margin:0 0 12px; color:var(--ai-ink); font-size:14px; line-height:22px; }
+.chat-task-result-date .order-detail-icon { display:flex; align-items:center; justify-content:center; flex:0 0 16px; width:16px; height:16px; border-radius:2px; background:var(--ai-brand); }
+.chat-task-result-date .order-detail-icon img { width:12px; height:12px; filter:brightness(0) invert(1); }
+.chat-task-result-route > div { position:relative; display:flex; align-items:flex-start; gap:11px; }
+.chat-task-result-route > div + div { padding-top:12px; }
+.chat-task-result-route > div:first-child::after { content:''; position:absolute; left:6.5px; top:22px; bottom:-11px; border-left:1px dashed #c7cfe5; }
+.chat-task-result-marker { width:14px; height:14px; flex-shrink:0; margin-top:4px; }
+.chat-task-result-route p { margin:0; min-width:0; }
+.chat-task-result-route small { display:block; color:var(--ai-muted); font-size:11px; line-height:1.6; margin-top:3px; }
+.chat-task-result-route strong { display:block; font-size:14px; line-height:1.6; font-weight:400; overflow-wrap:anywhere; }
+.chat-task-result-passenger { display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 12px; padding:12px 0; font-size:14px; line-height:1.5; }
+.chat-task-result-passenger span:last-child { color:var(--ai-muted); font-size:12px; }
+.chat-task-result-record { display:flex; align-items:flex-start; gap:8px; padding-top:10px; border-top:1px solid var(--ai-border); font-size:14px; line-height:1.6; }
+.chat-task-result-record p { margin:0; }

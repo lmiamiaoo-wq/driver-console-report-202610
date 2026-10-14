@@ -1,0 +1,702 @@
+/* Reference task surfaces: service / communication / compliance. */
+.phone.home-design {
+  --category-service-accent: #7286ff;
+  --category-communication-accent: #09b3d7;
+  --category-compliance-accent: #f9bf20;
+}
+/* Five-column native vector gradients preserve the reference's non-linear colour field. */
+.task-background-page { position:relative; background-size:100% 100%; }
+.task-background-page.task-tone-service { background-image:url('../backgrounds/task-aurora-service.svg'); }
+.task-background-page.task-tone-communication { background-image:url('../backgrounds/task-aurora-communication.svg'); }
+.task-background-page.task-tone-compliance,
+.task-background-page[data-task-id="prepare"] {
+  /* Match the purple field’s clear diffusion without a gray overlay. */
+  background-image:url('../backgrounds/task-aurora-compliance.svg?v=lemon-left-5');
+}
+.home-design .task-page { padding: 26px 16px 40px; }
+.home-design .task-page .task-card {
+  padding: 0; border: 1px solid #ffffffd9; border-radius: 16px; background: #ffffff40;
+  overflow-y: auto; box-shadow: none;
+}
+.home-design .home-card-heading {
+  height: 72px; min-height: 72px; gap: 12px; align-items: center; justify-content: space-between; padding: 0 0 0 16px;
+}
+.home-design .home-card-heading .task-title {
+  display: flex; align-items: center; align-self: center; height: auto; margin: 0; color: #282B38;
+  font-family: 'DingTalk JinBuTi', sans-serif; font-size: 26px; line-height: 34px;
+  letter-spacing: 1px; font-weight: 500; white-space: normal;
+}
+.task-time-badge {
+  display: flex; align-items: center; justify-content: center; gap: 6px; flex-shrink: 0;
+  min-width: 108px; height: 40px; padding: 0 16px; border-radius: 24px 0 0 24px;
+  background: var(--task-accent); color: white; font-size: 20px; line-height: 1; font-weight: 500;
+}
+.task-time-badge img { width: 20px; height: 20px; filter: brightness(0) invert(1); }
+.home-card-body {
+  display: flex; flex-direction: column; flex: 1 0 auto; min-height: calc(100% - 72px);
+  padding: 24px 15px 32px; background: #ffffffb3; border-radius: 16px;
+  border-top: 1px solid #fff;
+}
+.home-design .task-page .home-card-content { margin: 0; padding: 0; transform: none; }
+.home-design .task-page .details { font-size: 18px; font-weight: 400; }
+.home-design .task-page .customer { gap: 8px; min-height: 32px; font-size: 18px; flex-wrap: wrap; }
+.home-design .task-page .customer span { color: #282B38; font-size: 16px; font-weight: 400; }
+.home-design .task-page .customer .home-call { width: 32px; height: 32px; min-width: 32px; margin: 0 0 0 4px; border: 1px solid #fff; background: #ffffff80; }
+.home-design .task-page .customer .home-call::after { width: 18px; height: 18px; }
+.home-design .home-route { margin: 12px 0 0; padding-left: 19px; font-size: 16px; line-height: 24px; }
+.home-design .home-route>div { min-height: 24px; }
+.home-design .home-route>div+div { margin-top: 16px; }
+.home-design .home-route::before { top: 12px; bottom: 12px; background: #d5dbe2; }
+.home-design .home-route>div::before { top: 8px; }
+.home-design .task-page .advice.home-ai-advice,
+.home-design .task-page .task-card[data-id="prepare"] .home-ai-advice,
+.home-design .task-page .task-card[data-id="prepare"] .home-preparation-advice .home-ai-advice {
+  margin: 24px 0 0; padding: 20px 0 0; border-top: 1px solid #f1f2f4;
+  font-size: 20px; line-height: 36px; font-weight: 400; letter-spacing: 0px;
+}
+.home-design .task-page .advice-emphasis { font-weight: 600; }
+.preparation-summary { list-style: decimal; margin: 16px 0 40px; padding-left: 24px; font-size: 18px; line-height: 32px; font-weight: 600; }
+.preparation-summary li+li { margin-top: 8px; }
+.preparation-summary li::marker { font-family: 'DingTalk JinBuTi', sans-serif; font-size: 22px; font-weight: 700; }
+.home-design .task-page .home-card-bottom { margin: auto 0 0; padding-top: 32px; min-height: 0; transform: none; }
+.home-design .task-page .action.primary,
+.home-design .task-page .home-order-choice { height: 48px; min-height: 48px; font-size: 18px; font-weight: 500; }
+.phone.home-design .task-page .action.primary,
+.phone.home-design .task-page .home-order-choice.agree { box-shadow: 0 4px 10px color-mix(in srgb,var(--task-accent) 20%,transparent); }
+.home-design .task-page .task-card.task-type-service .action[data-home-action="去完成出车准备"] { background: var(--task-accent); color: #fff; border: 0; }
+.home-design .task-page .actions.home-order-actions { flex-direction: column; gap: 8px; }
+.home-design .task-page .home-order-choice.agree { order: -1; }
+.home-design .task-page .home-order-choice:not(.agree) { background: transparent; box-shadow: none; font-size: 16px; }
+.home-design .task-page .home-preparation-hint { margin: 8px 0 0; color: #42434d; }
+.home-design .task-page .home-contact-actions .action.primary { font-size: 16px; }
+.home-design .task-page .action.primary.outline { background: #ffffffb3; box-shadow: none; }
+.home-design .task-page .home-preparation-uploads { margin-top: 16px; }
+.home-design .task-page .home-preparation-upload-box { width: min(100%,120px); background: #ffffffa6; border-color: #eedfae; }
+/* One shared floating navigation treatment across the three main tabs. */
+.home-design .task-page .task-type-compliance .home-card-body {
+  background:linear-gradient(145deg, rgb(255 255 255 / 72%), rgb(255 255 255 / 58%));
+  border-top-color:#fff;
+  box-shadow:0 -2px 10px rgb(159 121 34 / 6%);
+}
+.phone footer nav,
+.phone.home-design:not(.task-chat-sheet)>footer nav,
+.phone.ai-mode footer nav {
+  height: 50px; padding: 3px; gap: 0; border: 1px solid #ffffffeb;
+  background: #ffffff9e; box-shadow: 0 8px 24px #54668f06; backdrop-filter: blur(12px);
+}
+.phone footer nav .nav-item,.phone.home-design footer nav #home { height: 42px; min-height: 42px; }
+.phone footer nav .nav-item.selected,.phone.home-design footer nav #home.selected { background: #fff; box-shadow: none; }
+.phone footer nav .nav-item::before,.phone footer nav .nav-item::after { width: 24px; height: 24px; }
+@media(max-width:360px), (max-height:720px) {
+  .home-design .task-page { padding: 16px 12px 20px; }
+  .home-design .home-card-heading { height: 64px; min-height: 64px; padding-left: 12px; gap: 8px; }
+  .home-design .home-card-heading .task-title { font-size: 22px; letter-spacing: 0; }
+  .task-time-badge { min-width: 88px; height: 36px; padding: 0 12px; font-size: 17px; }
+  .home-card-body { min-height: calc(100% - 64px); padding: 16px 15px 20px; }
+  .home-design .task-page .customer { font-size: 16px; gap: 6px; }
+  .home-design .task-page .customer span { font-size: 14px; }
+  .home-design .task-page .advice.home-ai-advice,
+  .home-design .task-page .task-card[data-id="prepare"] .home-ai-advice,
+  .home-design .task-page .task-card[data-id="prepare"] .home-preparation-advice .home-ai-advice { margin-top: 20px; padding-top: 16px; font-size: 17px; line-height: 30px; }
+  .preparation-summary { margin: 8px 0 24px; font-size: 16px; line-height: 28px; }
+  .home-design .task-page .home-card-bottom { padding-top: 24px; }
+}
+@media(prefers-reduced-transparency:reduce) { .phone footer nav { background: #fff; backdrop-filter: none; } }
+/* Align the floating bar and preparation action with the supplied reference. */
+.phone.home-design:not(.task-chat-sheet)>footer nav { bottom: calc(26px + max(8px,env(safe-area-inset-bottom))); }
+.phone footer nav .nav-item::before,.phone footer nav .nav-item::after { width: 28px; height: 28px; }
+.home-design .task-page [data-id="prepare"] .home-card-body { padding-bottom: 48px; }
+@media(max-width:360px), (max-height:720px) {
+  .home-design .task-page [data-id="prepare"] .home-card-body { padding-bottom: 24px; }
+}
+.home-design .task-page .home-order-actions .action.primary { order: -1; }
+
+/* Keep the preview gutter while fitting the available window height. */
+@media (min-width:431px) {
+  body { padding-block:18px; }
+  .phone { height:min(844px,calc(100dvh - 36px)); }
+}
+.phone.home-design { font-family: Arial, 'PingFang SC', sans-serif; }
+.phone.home-design>.statusbar { height:38px; padding:3px 24px 0; font-size:16px; }
+.phone.home-design>header { height:56px; }
+.phone.home-design>header h1 { font-size:18px; font-weight:600; }
+.phone.home-design>header #sound img { width:22px; height:22px; }
+.phone.home-design:not(.task-chat-sheet)>footer { height:87px; padding:0; }
+.home-design .task-page { padding:27px 17px 42px; }
+.home-design .task-page .task-card { border-width:1px; border-radius:16px; background:#ffffff59; }
+.home-design .home-card-heading { height:74px; min-height:74px; padding-left:16px; gap:12px; }
+.home-design .home-card-heading .task-title { font-size:28px; letter-spacing:1px; line-height:36px; }
+.task-time-badge { height:42px; min-width:112px; padding:0 17px; gap:6px; font-size:21px; border-radius:25px 0 0 25px; }
+.task-time-badge img { width:21px; height:21px; }
+.home-card-body { min-height:calc(100% - 74px); padding:25px 16px 33px; border-radius:16px; border-top-width:1px; }
+.task-type-service .home-card-body { background:linear-gradient(#f6f7f9,#f8f9fb); }
+.task-type-communication .home-card-body { background:#edfafd; }
+.task-type-compliance .home-card-body { background:linear-gradient(#fdfcf4,#fdfcf7); }
+.home-design .task-page .customer { font-size:19px; gap:8px; min-height:33px; }
+.home-design .task-page .customer span { font-size:16px; }
+.home-design .task-page .customer .home-call { width:33px; height:33px; min-width:33px; margin-left:4px; }
+.home-design .task-page .customer .home-call::after { width:19px; height:19px; }
+.home-design .home-route { font-size:16px; line-height:26px; margin-top:12px; padding-left:20px; }
+.home-design .home-route>div { min-height:26px; }
+.home-design .home-route>div+div { margin-top:17px; }
+.home-design .home-route::before { left:8px; top:13px; bottom:13px; }
+.home-design .home-route>div::before { content:none; }
+.home-design .home-route .home-route-marker { position:absolute; left:-19px; top:5px; width:16px; height:16px; }
+.home-design .task-page .advice.home-ai-advice,
+.home-design .task-page .task-card[data-id="prepare"] .home-ai-advice,
+.home-design .task-page .task-card[data-id="prepare"] .home-preparation-advice .home-ai-advice {
+  margin-top:25px; padding-top:21px; font-size:20px; line-height:37px; letter-spacing:0; text-align:justify;
+}
+.preparation-summary { margin:17px 0 42px; padding-left:25px; font-size:20px; line-height:34px; font-weight:500; }
+.preparation-summary li+li { margin-top:8px; }
+.preparation-summary li::marker { font-size:23px; }
+.home-design .task-page .home-card-bottom { padding-top:33px; }
+.home-design .task-page [data-id="prepare"] .home-card-body { padding-bottom:50px; }
+.home-design .task-page .action.primary,.home-design .task-page .home-order-choice { height:50px; min-height:50px; font-size:19px; }
+.home-design .task-page .home-order-choice:not(.agree) { font-size:17px; }
+.home-design .task-page .actions.home-order-actions { gap:8px; }
+.home-design .task-page .home-preparation-hint { font-size:12px; line-height:18px; margin-top:8px; }
+.phone.home-design:not(.task-chat-sheet)>footer nav {
+  left:17px; right:17px; bottom:35px; height:52px; padding:3px; border-width:1px;
+}
+.phone.home-design footer nav .nav-item,.phone.home-design footer nav #home { height:44px; min-height:44px; }
+.phone.home-design footer nav .nav-item::before,.phone.home-design footer nav .nav-item::after { width:29px; height:29px; }
+/* Narrow screens retain every operation through native card scrolling. */
+@media(max-width:360px), (max-height:720px) {
+  .home-design .task-page { padding:16px 12px 20px; }
+  .home-design .home-card-heading { height:64px; min-height:64px; padding-left:12px; }
+  .home-design .home-card-heading .task-title { font-size:22px; letter-spacing:0; }
+  .task-time-badge { min-width:88px; height:36px; padding:0 12px; font-size:17px; }
+  .home-card-body { min-height:calc(100% - 64px); padding:16px 15px 24px; }
+  .home-design .task-page [data-id="prepare"] .home-card-body { padding-bottom:24px; }
+  .home-design .task-page .customer { font-size:16px; gap:6px; }
+  .home-design .task-page .customer span { font-size:14px; }
+  .home-design .task-page .advice.home-ai-advice,
+  .home-design .task-page .task-card[data-id="prepare"] .home-ai-advice,
+  .home-design .task-page .task-card[data-id="prepare"] .home-preparation-advice .home-ai-advice { margin-top:20px; padding-top:16px; font-size:17px; line-height:30px; }
+  .preparation-summary { margin:8px 0 24px; font-size:16px; line-height:28px; }
+  .home-design .task-page .home-card-bottom { padding-top:24px; }
+}
+/* Optical corrections after the first 390x844 overlay. */
+@media(min-width:361px) and (min-height:721px) {
+  .home-design .home-card-heading { height:74px; min-height:74px; padding-left:16px; }
+  .home-design .home-card-heading .task-title { letter-spacing:2px; }
+  .home-card-body { min-height:calc(100% - 74px); padding-inline:16px; }
+  .preparation-summary { margin-top:19px; margin-bottom:44px; }
+  .home-design .task-page .advice.home-ai-advice,
+  .home-design .task-page .task-card[data-id="prepare"] .home-ai-advice,
+  .home-design .task-page .task-card[data-id="prepare"] .home-preparation-advice .home-ai-advice { padding-top:24px; }
+}
+.preparation-summary { list-style:none; counter-reset:preparation-step; }
+.preparation-summary li { position:relative; counter-increment:preparation-step; }
+.preparation-summary li::before {
+  content:counter(preparation-step) '.'; position:absolute; right:calc(100% + 4px); top:0;
+  font-family:'DingTalk JinBuTi',sans-serif; font-size:21px; line-height:inherit; font-weight:700;
+  z-index:1;
+}
+.phone.home-design>header .capsule { position:absolute; right:6px; width:89px; height:33px; justify-content:center; gap:8px; padding:0 10px; }
+.phone.home-design>header #sound { position:absolute; right:87px; margin:0; }
+.phone.home-design:not(.task-chat-sheet):not(.secondary-page):not(.conversation-page)>footer nav {
+  left:17px; right:17px; bottom:35px;
+}
+.phone.home-design .miniapp-controls { top:49px; right:12px; }
+.phone.home-design .miniapp-controls>.capsule { width:auto; height:34px; padding:0 7px; gap:6px; justify-content:center; }
+.phone.home-design .miniapp-controls>.capsule img { width:20px; height:20px; }
+/* Match the reference's light body copy while retaining stronger key values. */
+.phone.home-design { font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; }
+.home-design .task-page .advice.home-ai-advice { font-weight:300; letter-spacing:0px; }
+.preparation-summary li::before { left:-25px; right:auto; }
+@media(min-width:361px) and (min-height:721px) {
+  .home-design .task-page .task-card:not([data-id="prepare"]) .advice.home-ai-advice { padding-top:19px; }
+  .home-design .task-page [data-id="order"] .home-card-body { padding-bottom:18px; }
+  .home-design .task-page .actions.home-order-actions { gap:11px; }
+}
+
+/* Match emphasis weight and preserve the luggage noun as one typographic unit. */
+.home-design .task-page .advice-emphasis { font-weight:500; }
+.home-design .task-page .advice-word { white-space:nowrap; }
+.home-design .task-time-badge { justify-content:flex-start; padding-inline:15px; gap:6px; }
+.home-design .task-time-badge img { width:23px; height:23px; }
+.home-design .task-page .customer .home-call::after {
+  width:19px; height:19px;
+  mask-image:url('../icons/task-phone.svg');
+  -webkit-mask-image:url('../icons/task-phone.svg');
+}
+
+@media(min-width:361px) and (min-height:721px) {
+  .home-design .home-card-heading .task-title { letter-spacing:2px; }
+  .preparation-summary { padding-left:24px; }
+  .preparation-summary li::before { left:-24px; }
+}
+
+/* User annotation sizes apply to task cards; compact screens retain their existing smaller type. */
+@media(min-width:361px) and (min-height:721px) {
+  .home-design .task-page .task-card[data-id="prepare"] .home-ai-advice,
+  .home-design .task-page .task-card[data-id="prepare"] .home-preparation-advice .home-ai-advice {
+    font-size:18px;
+  }
+}
+.preparation-summary li { isolation:isolate; }
+.preparation-summary li::after {
+  content:""; position:absolute; left:-24px; top:20px;
+  width:24px; height:12px; z-index:0; pointer-events:none;
+  background:url('../images/preparation-number-highlight.png') center/contain no-repeat;
+}
+.home-design .task-page .actions.home-contact-actions,
+.home-design .task-page .actions.home-contact-actions.home-contact-asked {
+  grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 16px;
+}
+.home-design .task-page .home-contact-actions .action[data-home-action="确认"] {
+  grid-column:1 / -1; grid-row:1; font-size:19px;
+}
+.home-design .task-page .home-contact-actions .action.outline {
+  grid-row:2; height:40px; min-height:40px; background:transparent;
+  box-shadow:none; padding:0 8px; font-size:16px;
+}
+.home-design .task-page .home-contact-actions.home-contact-asked .action.outline {
+  grid-column:1 / -1;
+}
+@media(max-width:360px), (max-height:720px) {
+  .preparation-summary li::after { left:-25px; top:16px; }
+}
+
+.phone.home-design>header #page-title { font-family:inherit; font-size:18px; font-weight:600; }
+
+/* Shared frosted surfaces: tint remains visible through the glass, copy stays crisp. */
+:root {
+  --glass-blur: blur(36px) saturate(120%);
+  --glass-surface: linear-gradient(155deg, rgb(255 255 255 / 46%), rgb(255 255 255 / 26%));
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 74%), inset 0 -1px 0 rgb(255 255 255 / 24%);
+  /* Match the tourist conversation guide's surface, filter and edge lighting. */
+  --task-glass-surface: linear-gradient(145deg, rgb(255 255 255 / 48%), rgb(244 247 255 / 25%));
+  --task-glass-filter: blur(36px) saturate(135%);
+  --task-glass-edge: inset 0 1px 0 #fff, inset 0 -1px 0 #ffffff70;
+  --task-glass-shadow: 0 18px 46px rgb(76 91 153 / 12%);
+}
+.home-design .task-page .task-card {
+  /* One continuous rounded surface: no rectangular title fill beneath the body's corners. */
+  background:linear-gradient(145deg, rgb(255 255 255 / 57%), rgb(244 247 255 / 30%));
+  border-color:rgb(255 255 255 / 90%);
+  backdrop-filter:var(--task-glass-filter);
+  -webkit-backdrop-filter:var(--task-glass-filter);
+  box-shadow:var(--task-glass-shadow), var(--task-glass-edge);
+}
+.home-design .task-page .home-card-heading { background:transparent; }
+/* Yellow cards share the purple cards’ neutral glass layers. */
+.home-design .task-page .task-card.task-type-compliance {
+  background:linear-gradient(145deg, rgb(255 255 255 / 57%), rgb(244 247 255 / 30%));
+}
+.home-design .task-page .home-card-body {
+  /* Keep the existing body boundary; the outer card owns the single blur pass. */
+  background:linear-gradient(145deg, rgb(255 255 255 / 72%), rgb(255 255 255 / 58%));
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  border-top-color:rgb(255 255 255 / 76%);
+  box-shadow:none;
+}
+.phone footer nav,
+.phone.home-design:not(.task-chat-sheet)>footer nav,
+.phone.ai-mode footer nav,
+.phone .capsule,
+.phone:is(.ai-mode,.conversation-page,.task-chat-sheet) .composer,
+.phone.ai-mode .ai-prompt-list button {
+  background:var(--glass-surface);
+  backdrop-filter:var(--glass-blur);
+  -webkit-backdrop-filter:var(--glass-blur);
+  box-shadow:var(--glass-highlight), 0 6px 20px rgb(40 43 56 / 3%);
+}
+.phone footer nav,
+.phone.home-design:not(.task-chat-sheet)>footer nav,
+.phone.ai-mode footer nav {
+  background:var(--task-glass-surface);
+  backdrop-filter:var(--task-glass-filter);
+  -webkit-backdrop-filter:var(--task-glass-filter);
+  box-shadow:var(--task-glass-edge), 0 8px 24px rgb(76 91 153 / 6%);
+}
+.phone footer nav .nav-item.selected,
+.phone.home-design footer nav #home.selected {
+  background:rgb(255 255 255 / 46%);
+  box-shadow:inset 0 1px 0 rgb(255 255 255 / 60%);
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+/* The three primary tabs share one nav geometry; page backgrounds may differ. */
+.phone:is(.home-design,.ai-mode,.profile-mode):not(.task-chat-sheet):not(.secondary-page):not(.conversation-page)>footer nav {
+  position:absolute; left:17px; right:17px; bottom:35px;
+  width:auto; height:52px; margin:0; padding:3px; gap:0;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid rgb(255 255 255 / 80%); border-radius:999px;
+}
+.phone:is(.home-design,.ai-mode,.profile-mode)>footer nav .nav-item,
+.phone:is(.home-design,.ai-mode,.profile-mode)>footer nav #home {
+  width:100%; min-width:0; height:44px; min-height:44px;
+  padding:0; border-radius:999px;
+}
+.phone:is(.home-design,.ai-mode,.profile-mode)>footer nav .nav-item::before,
+.phone:is(.home-design,.ai-mode,.profile-mode)>footer nav .nav-item::after {
+  width:29px; height:29px;
+}
+.phone:is(.home-design,.ai-mode,.profile-mode)>footer nav .nav-item.selected::after {
+  animation:none;
+}
+.phone.profile-mode>footer { background:transparent; }
+/* Reserve the input-to-nav gap after matching the task tab's higher bar position. */
+.phone.ai-mode:not(.task-chat-sheet):not(.secondary-page):not(.conversation-page)>footer {
+  padding-bottom:calc(79px + max(8px,env(safe-area-inset-bottom)));
+}
+
+.home-design .task-page .action.primary:not(.outline),
+.home-design .task-page .home-order-choice.agree { font-size:18px; }
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+  .home-design .task-page .task-card,
+  .home-design .task-page .home-card-body,
+  .home-design .task-page .task-card.task-type-communication,
+  .home-design .task-page .task-type-communication .home-card-body,
+  .phone footer nav,.phone .capsule,
+  .phone:is(.ai-mode,.conversation-page,.task-chat-sheet) .composer,
+  .phone.ai-mode .ai-prompt-list button { background:rgb(255 255 255 / 88%); }
+}
+@media(prefers-reduced-transparency:reduce) {
+  .home-design .task-page .task-card,
+  .home-design .task-page .home-card-body,
+  .home-design .task-page .task-card.task-type-communication,
+  .home-design .task-page .task-type-communication .home-card-body,
+  .phone footer nav,
+  .phone.home-design:not(.task-chat-sheet)>footer nav,
+  .phone.ai-mode footer nav,.phone .capsule,
+  .phone:is(.ai-mode,.conversation-page,.task-chat-sheet) .composer,
+  .phone.ai-mode .ai-prompt-list button,
+  .phone footer nav .nav-item.selected,
+  .phone.home-design footer nav #home.selected {
+    background:#fff; backdrop-filter:none; -webkit-backdrop-filter:none;
+  }
+}
+
+/* Card text uses explicit integer line boxes at every responsive size. */
+.home-design .task-page .details { line-height:28px; }
+.home-design .task-page .customer { min-height:34px; line-height:28px; }
+.home-design .task-page .customer .home-call { width:34px; height:34px; min-width:34px; }
+.home-design .task-page .customer .home-call::after { width:20px; height:20px; }
+.home-design .task-time-badge { line-height:24px; }
+.home-design .task-time-badge img { width:24px; height:24px; }
+.home-design .task-page .action.primary,
+.home-design .task-page .home-order-choice { line-height:24px; }
+
+@media(max-width:360px) {
+  .phone.home-design .miniapp-controls { right:10px; }
+  .phone.home-design>header #sound { right:85px; }
+  .phone.home-design>header #page-title { font-size:16px; }
+}
+
+/* Cards fill the available space inside the page’s 16px padding. */
+.home-design .home-card-stack {
+  width:100%;
+  height:100%;
+}
+.home-design .task-page .task-card {
+  width:100%;
+  height:100%;
+  overflow:visible;
+  border:0;
+  border-radius:16px;
+  box-shadow:inset 0 0 0 1px #fff, var(--task-glass-shadow), var(--task-glass-edge);
+}
+.home-design .task-page .task-card .home-card-body {
+  width:100%;
+  height:calc(100% - 74px);
+  overflow:auto;
+  scrollbar-width:none;
+  min-height:0;
+  flex:none;
+  border-top:0;
+  border-radius:16px;
+  box-shadow:0 0 0 1px #fff;
+}
+@media(max-width:360px), (max-height:720px) {
+  .home-design .task-page .task-card .home-card-body {
+    height:calc(100% - 64px);
+  }
+}
+
+/* Shared task-page spacing, including compact viewports. */
+.phone.home-design .task-page { padding:16px; gap:16px; }
+.phone.home-design .task-page .home-card-heading { padding-left:16px; gap:16px; }
+.phone.home-design .task-page .task-card .home-card-body { padding:16px; }
+.phone.home-design .task-page .home-card-bottom { padding-top:16px; }
+.phone.home-design .task-page .advice.home-ai-advice,
+.phone.home-design .task-page .task-card[data-id="prepare"] .home-ai-advice,
+.phone.home-design .task-page .task-card[data-id="prepare"] .home-preparation-advice .home-ai-advice {
+  margin-top:16px; padding-top:16px;
+}
+.phone.home-design .task-page .preparation-summary { margin:16px 0; }
+.phone.home-design .task-page .home-route { margin-top:16px; }
+.phone.home-design .task-page .home-route>div+div { margin-top:8px; }
+.phone.home-design:not(.task-chat-sheet):not(.secondary-page):not(.conversation-page)>footer nav { left:16px; right:16px; }
+
+/* Background pages share the card scroll distance; extend the last one under the fixed chrome. */
+.phone.home-design .task-background-page:last-child { height:var(--background-last-page-height,100dvh); }
+.phone.home-design:not(.task-chat-sheet):not(.secondary-page):not(.conversation-page)>footer { background:transparent; }
+
+/* One full-phone scroll page keeps its background and card aligned beneath fixed controls. */
+.phone.home-design:not(.task-chat-sheet):not(.secondary-page) #task-list {
+  top:calc(-1 * var(--task-top-inset,94px));
+  bottom:calc(-1 * var(--task-bottom-inset,87px));
+}
+.phone.home-design:not(.task-chat-sheet):not(.secondary-page) .task-page {
+  padding:calc(var(--task-top-inset,94px) + 16px) 16px calc(var(--task-bottom-inset,87px) + 32px);
+}
+
+/* The lower layer uses a white outer stroke, with no gray contour. */
+.phone.home-design .task-page .task-card.task-type-compliance .home-card-body {
+  box-shadow:0 0 0 1px #fff;
+}
+
+/* Actions follow the copy; the spacer flexes between 24px and 40px. */
+.phone.home-design .task-page .task-card .home-card-body::after {
+  content:"";
+  display:block;
+  order:1;
+  flex:1 1 40px;
+  min-height:24px;
+  max-height:40px;
+}
+.phone.home-design .task-page .home-card-content { order:0; }
+.phone.home-design .task-page .home-card-bottom {
+  order:2;
+  flex:none;
+  margin:0;
+  padding:0;
+  min-height:0;
+}
+
+/* Restore the native title alignment for DingTalk JinBuTi. */
+.phone.home-design .home-card-heading .task-title { top:0; }
+@media(max-width:360px), (max-height:720px) {
+  .phone.home-design .home-card-heading .task-title { top:0; }
+}
+
+/* Ticket stub separator between passenger information or preparation steps and details. */
+.phone.home-design .task-page .ticket-divider {
+  position:relative;
+  height:2px;
+  margin:16px -16px 0;
+  pointer-events:none;
+}
+.phone.home-design .task-page .ticket-divider + .advice.home-ai-advice,
+.phone.home-design .task-page .task-card[data-id="prepare"] .ticket-divider + .home-ai-advice,
+.phone.home-design .task-page .task-card[data-id="prepare"] .ticket-divider + .home-preparation-advice .home-ai-advice {
+  margin-top:16px;
+  padding-top:0;
+  border-top:0;
+}
+.phone.home-design .task-page .task-card:has(.ticket-divider),
+.phone.home-design .task-page .task-card:has(.ticket-divider) .home-card-body {
+  -webkit-mask-image:var(--ticket-mask);
+  mask-image:var(--ticket-mask);
+  mask-repeat:no-repeat;
+  mask-size:100% 100%;
+}
+
+/* Richer lemon surroundings and a clearer white paper surface separate the yellow card. */
+.task-background-page.task-tone-compliance,
+.task-background-page[data-task-id="prepare"] {
+  background-image:
+    radial-gradient(ellipse 66% 58% at 0% 16%, rgb(255 227 107 / 50%) 0%, rgb(255 227 107 / 20%) 52%, rgb(255 227 107 / 0%) 100%),
+    linear-gradient(180deg, rgb(255 246 208 / 0%) 0%, rgb(255 246 208 / 35%) 14%, #fff6d0 27%, #fffdf2 100%),
+    linear-gradient(90deg, #ffe36b 0%, #ffeda1 34%, #fff8d8 62%, #e3f2ce 81%, #a8e7b8 100%);
+}
+.phone.home-design .task-page .task-card.task-type-compliance {
+  background:linear-gradient(145deg, rgb(255 255 255 / 76%), rgb(255 255 255 / 62%));
+}
+.phone.home-design .task-page .task-card.task-type-compliance .home-card-body {
+  background:linear-gradient(145deg, rgb(255 255 255 / 94%), rgb(255 255 255 / 88%));
+}
+.phone.home-design .home-card-stack:has(.task-type-compliance) {
+  border-radius:16px;
+  /* A rectangular wrapper shadow would remain beneath the ticket cutouts. */
+  box-shadow:none;
+}
+
+/* Time labels use each task category's accent for fill, outline and content. */
+.phone.home-design .task-time-badge {
+  background:color-mix(in srgb, var(--task-accent) 20%, transparent);
+  border:1px solid var(--task-accent);
+  color:var(--task-accent);
+}
+.phone.home-design .task-time-badge img { display:none; }
+.phone.home-design .task-time-badge::before {
+  content:"";
+  width:18px;
+  height:18px;
+  flex:none;
+  background:currentColor;
+  -webkit-mask:url('../icons/task-clock.svg') center / contain no-repeat;
+  mask:url('../icons/task-clock.svg') center / contain no-repeat;
+}
+
+/* Reference ribbon: rounded left cap, square projecting edge and folded corner. */
+.phone.home-design .home-card-heading { padding-right:88px; }
+.phone.home-design .home-card-stack > .task-time-badge {
+  position:absolute;
+  top:21px;
+  right:-6px;
+  z-index:3;
+  height:32px;
+  min-width:94px;
+  padding:0 18px 0 12px;
+  border-radius:18px 0 0 18px;
+  font-size:16px;
+  line-height:20px;
+  gap:5px;
+  font-weight:500;
+}
+.phone.home-design .task-time-badge .task-time-fold {
+  position:absolute;
+  top:calc(100% - .5px);
+  right:-.5px;
+  width:6px;
+  height:9px;
+  overflow:visible;
+  pointer-events:none;
+}
+@media(max-width:360px), (max-height:720px) {
+  .phone.home-design .home-card-heading { padding-right:88px; }
+  .phone.home-design .home-card-stack > .task-time-badge {
+    top:16px;
+    height:32px;
+    min-width:94px;
+    padding:0 18px 0 12px;
+  }
+}
+
+/* Preparation spacing is shared by all viewport sizes; compact typography stays smaller. */
+.phone.home-design .task-page .task-card[data-id="prepare"] .home-card-body { padding-top:32px; }
+.phone.home-design .task-page .preparation-summary {
+  margin:0;
+  padding-left:32px;
+  font-size:18px;
+}
+.phone.home-design .task-page .preparation-summary li::before {
+  left:-28px;
+  width:24px;
+  text-align:center;
+}
+.phone.home-design .task-page .preparation-summary li::after { left:-28px; }
+.phone.home-design .task-page .preparation-summary + .ticket-divider { margin-top:32px; }
+.phone.home-design .task-page .customer strong,
+.phone.home-design .task-page .customer span,
+.phone.home-design .task-page .home-order-choice:not(.agree),
+.phone.home-design .task-page .home-contact-actions .action.outline { font-size:18px; }
+.phone.home-design .task-page .home-preparation-uploads { grid-template-columns:minmax(0,1fr); }
+@media(max-width:360px), (max-height:720px) {
+  .phone.home-design .task-page .preparation-summary,
+  .phone.home-design .task-page .customer strong,
+  .phone.home-design .task-page .customer span,
+  .phone.home-design .task-page .home-order-choice:not(.agree),
+  .phone.home-design .task-page .home-contact-actions .action.outline { font-size:16px; }
+}
+
+/* Consistent tabs across task, AI and profile pages; selection uses only the icon colour. */
+.phone footer nav .nav-item,
+.phone footer nav .nav-item.selected,
+.phone.home-design footer nav #home,
+.phone.home-design footer nav #home.selected {
+  background:transparent;
+  box-shadow:none;
+  border:0;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+.phone.home-design .home-route { padding-left:20px; }
+.phone.home-design .home-route::before { left:7.5px; width:1px; }
+.phone.home-design .home-route .home-route-marker { left:-20px; }
+
+/* Onboarding checklist shares the yellow task surface and numbered highlights. */
+.phone.home-design .task-page .task-card[data-id="business-card"] .home-card-body { padding-top:32px; }
+.phone.home-design .business-card-steps { line-height:28px; }
+.phone.home-design .business-card-steps li + li { margin-top:20px; }
+.phone.home-design .business-card-steps li > strong { font-weight:600; }
+.phone.home-design .business-card-steps li > p {
+  margin:4px 0 0;
+  font-size:14px;
+  line-height:22px;
+  font-weight:400;
+  color:#626573;
+}
+.phone.home-design .business-card-optional { font-size:14px; font-weight:400; color:#777986; }
+.phone.home-design .business-card-steps li::after { top:16px; }
+@media(max-width:360px), (max-height:720px) {
+  .phone.home-design .task-page .task-card[data-id="business-card"] .home-card-body { padding-top:20px; }
+  .phone.home-design .business-card-steps li + li { margin-top:12px; }
+}
+
+/* Keep chat bubbles flat and lift only the bottom input. */
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) .composer {
+  box-shadow:0 4px 16px rgb(72 88 160 / 6%), 0 1px 4px rgb(72 88 160 / 3%);
+}
+
+/* Trip requirements use prose instead of a pickup/drop-off route. */
+.phone.home-design .trip-plan-request { margin:16px 0 0; font-size:16px; line-height:28px; }
+@media(max-width:360px), (max-height:720px) {
+  .phone.home-design .trip-plan-request { font-size:16px; line-height:26px; }
+  .phone.home-design [data-id="trip-plan"] .task-title { font-size:22px; letter-spacing:0; }
+}
+
+/* Emphasis inherits the task category hue; darken text slightly for readability. */
+.phone.home-design .task-page :is(.advice-emphasis, .trip-plan-emphasis) {
+  color:var(--task-emphasis-ink, color-mix(in srgb, var(--task-accent) 78%, #242630)); font-weight:500;
+  background:linear-gradient(transparent 62%, color-mix(in srgb, var(--task-accent) 14%, transparent) 62%);
+}
+
+/* Keep yellow emphasis saturated rather than mixing gray into the lettering. */
+.phone.home-design .task-card.task-type-compliance { --task-emphasis-ink:#e0a400; }
+
+/* Lost-item decisions stack consistently across phone widths. */
+.home-design .task-page .task-card[data-id="lost-hat"] .actions { flex-direction:column; gap:12px; }
+.home-design .task-page .task-card[data-id="lost-hat"] .actions .action { width:100%; flex:none; }
+
+/* Charter confirmation keeps the existing blue communication-card treatment. */
+.phone.home-design .charter-order-requirements{margin:16px 0 0;font-size:16px;line-height:26px;white-space:normal}
+.home-design .task-page .task-card[data-id="charter-confirm"] .actions{flex-direction:column;gap:12px}
+.home-design .task-page .task-card[data-id="charter-confirm"] .actions .action{width:100%;flex:none}
+.phone.home-design [data-id="charter-confirm"] .task-title{font-size:24px;letter-spacing:0}
+@media(max-width:360px){
+  .phone.home-design [data-id="charter-confirm"] .task-title{font-size:22px}
+}
+@media(max-width:360px), (max-height:720px){
+  .phone.home-design .task-page [data-id="charter-confirm"] .home-ai-advice{font-size:16px;line-height:26px}
+  .phone.home-design .task-page [data-id="charter-confirm"] .actions{gap:8px}
+  .phone.home-design .task-page [data-id="charter-confirm"] .actions .action{height:44px;min-height:44px}
+}
+
+/* Secondary decisions retain their hit areas with a text-only appearance. */
+.phone.home-design .task-page .task-card[data-id="charter-confirm"] [data-home-action="接不了"],
+.phone.home-design .task-page .task-card[data-id="lost-hat"] [data-home-action="否"]{
+  background:transparent;border:0;box-shadow:none;
+}
+
+/* Intermediate stops share the existing pickup/drop-off route alignment. */
+.phone.home-design .home-route .home-route-waypoint {
+  display:flex;align-items:center;justify-content:center;border-radius:2px;
+  background:var(--task-accent);color:#fff;font-size:10px;line-height:16px;font-weight:500;
+}
+/* Task titles keep a consistent size, including compact phone layouts. */
+.phone .task-card .task-title,
+.phone.home-design .task-page .task-card .task-title { font-size:24px;letter-spacing:0; }
+
+/* The charter itinerary reads as one wrapping sentence. */
+.phone.home-design .home-route-summary { margin:16px 0 0;font-size:16px;line-height:26px;overflow-wrap:anywhere; }
+.phone.home-design .task-page [data-id="day-charter"] .home-ai-advice { font-size:20px;line-height:32px; }
+@media(max-width:360px), (max-height:720px) {
+  .phone.home-design .task-page [data-id="day-charter"] .home-ai-advice { line-height:28px; }
+}
+
+/* Order dates and times sit directly below the passenger details. */
+.phone.home-design .home-order-date { margin:12px 0 0;font-size:16px;line-height:26px; }
+.phone.home-design .task-page .home-order-date + :is(.home-route,.home-route-summary,.charter-order-requirements) { margin-top:8px; }
+
+/* Itinerary icons share the pickup/drop-off markers' small square background. */
+.phone.home-design :is(.home-order-date,.home-route-summary,.charter-order-requirements) { display:flex;align-items:flex-start;gap:4px; }
+.phone.home-design .order-detail-icon { display:flex;align-items:center;justify-content:center;flex:0 0 16px;width:16px;height:16px;margin-top:5px;border-radius:2px;background:var(--task-accent); }
+.phone.home-design .order-detail-icon img { width:12px;height:12px;filter:brightness(0) invert(1); }
+.phone.home-design :is(.home-order-date,.home-route-summary,.charter-order-requirements)>span:last-child { min-width:0; }

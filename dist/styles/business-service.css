@@ -1,0 +1,24 @@
+/* Tourist chat service card and transfer detail, adapted to driver preview data. */
+.phone .business-chat-service { display:flex; align-items:center; gap:12px; width:100%; padding:8px; border:0; border-radius:16px; text-align:left; color:#282b38; background:linear-gradient(145deg,rgba(255,255,255,.65),rgba(255,255,255,.26)); backdrop-filter:blur(40px) saturate(1.1); -webkit-backdrop-filter:blur(40px) saturate(1.1); box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),0 8px 24px rgba(76,91,153,.06); }
+.business-chat-service > img { width:72px; height:72px; flex:none; object-fit:cover; border-radius:8px; }
+.business-chat-service > span { display:grid; gap:4px; flex:1; min-width:0; }
+.business-chat-service strong { font-size:14px; line-height:1.5; font-weight:500; }
+.business-chat-service small { color:#667085; font-size:12px; line-height:1.5; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.business-chat-service b { color:#ff4164; font-size:16px; font-weight:500; }
+.business-chat-service b small { display:inline; color:inherit; font-size:12px; font-weight:400; }
+#utility.business-service-detail, #utility.business-service-detail .dialog-head { background:#fff; }
+#utility.business-service-detail .dialog-head h2 { font-size:18px; font-weight:500; }
+#utility.business-service-detail #utility-body { padding:0 0 max(28px,env(safe-area-inset-bottom)); scrollbar-width:none; }
+.phone:has(.business-service-detail[open]) > .statusbar { background:#fff; }
+.business-service-cover { display:block; width:100%; height:auto; aspect-ratio:1.6; object-fit:cover; }
+.business-transfer-detail section { margin:0; padding:18px 16px; background:#fff; color:#282b38; font-size:14px; line-height:1.65; }
+.business-transfer-detail .business-service-intro { padding:16px; }
+.business-transfer-detail .business-service-price { margin:0 0 8px; color:#ff4164; font-size:24px; font-weight:500; line-height:1.3; }
+.business-service-price small { font-size:20px; }
+.business-transfer-detail h1 { display:block; white-space:normal; margin:0; font-size:20px; font-weight:500; line-height:1.5; }
+.business-transfer-detail h2 { margin:0 0 14px; font-size:16px; font-weight:500; }
+.business-transfer-detail p { margin:0; white-space:pre-line; }
+.business-transfer-detail ul { margin:0; padding-left:19px; }
+.business-transfer-detail p + ul:not(:empty) { margin-top:12px; }
+.business-transfer-detail li + li { margin-top:12px; }
+.business-service-divider { height:10px; background:#f4f5f7; }

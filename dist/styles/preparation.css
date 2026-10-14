@@ -1,0 +1,7 @@
+/* Retain only the preparation task background; layout uses the previous styles. */
+:root {
+  --prep-canvas: #fcfbf8;
+  --prep-glow: radial-gradient(ellipse 90% 38% at 24% 12%, #fff1cd 0%, transparent 76%), var(--prep-canvas);
+}
+.task-background-page[data-task-id="prepare"] { background: var(--prep-glow); }
+.phone.home-design:has(.task-page[aria-hidden="false"] [data-id="prepare"]) { background: var(--prep-canvas); }

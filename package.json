@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "python3 -m http.server 5173 --directory dist",
-    "check": "node --check dist/app.js && node --check dist/profile.js"
+    "check": "node --check dist/app.js && node --check dist/profile.js && node --check dist/dashboard.js && node --check dist/trip-plan.js && node --check dist/festival-services.js && node --check dist/weekly-report.js"
   },
   "keywords": [],
   "author": "",

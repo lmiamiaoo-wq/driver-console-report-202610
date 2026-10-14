@@ -1,0 +1,227 @@
+/* Ambient styling is retained only on AI conversation and voice surfaces. */
+.phone.ai-mode, .phone.conversation-page { background: var(--ai-ambient); }
+.phone.ai-mode .workspace, .phone.conversation-page .workspace { background: transparent; }
+.ai-mode #ai-page .ai-welcome {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 28px; padding: 24px 0; margin: 0 24px;
+}
+.ai-mode #ai-page .ai-welcome::before { content: none; }
+.ai-mode #ai-page .ai-welcome h2 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -.5px; }
+.ai-mode #ai-page .ai-recommendations { margin: 0 20px 16px; }
+.ai-mode #ai-page .ai-recommendations h3 { margin-bottom: 12px; color: var(--ai-muted); }
+.ai-mode #ai-page .ai-prompt-list { gap: 10px; }
+.ai-mode #ai-page .ai-prompt-list button {
+  padding: 12px 16px; min-height: 44px; border: 0;
+  border-radius: 999px; background: var(--ai-white);
+  color: var(--ai-ink); box-shadow: var(--ai-shadow-card);
+}
+.phone .message.ai .bubble,
+.phone.task-chat-sheet .message.ai .bubble {
+  background: var(--ai-white); color: var(--ai-ink);
+  border: 1px solid var(--ai-border); border-radius: 20px 20px 20px 6px;
+  box-shadow: var(--ai-shadow-card); line-height: 1.8;
+}
+.phone .message.user .bubble {
+  background: #7286ff; color: #fff;
+  border: 1px solid var(--ai-border); border-radius: 20px 20px 6px 20px;
+  line-height: 1.8;
+}
+.phone .messages { padding-bottom: 24px; }
+.phone .message { margin-bottom: 18px; }
+.phone.task-chat-sheet.processing #chat {
+  background: var(--ai-canvas); border-radius: 24px 24px 0 0;
+  border-top: 1px solid var(--ai-border); box-shadow: 0 -8px 32px rgb(56 72 118 / 7%);
+}
+.phone.task-chat-sheet footer { background:#ededf7; }
+.phone.task-chat-sheet footer>#composer { background: var(--ai-white); }
+#utility.voice-dialog { background: var(--ai-ambient); }
+.voice-dialog .voice-orb { width: 176px; height: 176px; margin-bottom: 40px; }
+.voice-dialog .orb-core {
+  background: var(--ai-orb); box-shadow: inset 0 0 24px #ffffffb3, 0 12px 60px #7286ff26;
+  animation: ambient-breathe 6s ease-in-out infinite;
+}
+.voice-dialog .orb-core::after { opacity: .4; animation-duration: 24s; }
+.voice-dialog .voice-orb.is-listening .orb-core { animation-duration: 3s; }
+.voice-dialog .voice-orb.is-answering .orb-core { animation-duration: 4s; box-shadow: inset 0 0 24px #ffffffb3, 0 12px 60px #7286ff38; }
+.voice-dialog :is(.voice-status, .voice-invite, .voice-question) { color: var(--ai-muted); }
+.voice-dialog .voice-answer { color: var(--ai-ink); }
+.voice-dialog .voice-controls .icon-button { border-color: var(--ai-border); box-shadow: var(--ai-shadow-card); }
+.voice-dialog .voice-text { border-radius: var(--ai-radius-pill); }
+@keyframes ambient-breathe { 0%,100% { transform: scale(.97); } 50% { transform: scale(1.03); } }
+
+@media (max-height: 720px) {
+  .ai-mode #ai-page .ai-welcome { gap: 18px; padding-block: 12px; }
+  .ai-mode #ai-page .ai-welcome::before { width: 72px; height: 72px; }
+  .ai-mode #ai-page .ai-welcome h2 { font-size: 21px; }
+  .ai-mode #ai-page .ai-prompt-list button { padding-block: 10px; }
+  .ai-mode #ai-page .ai-recommendations { margin-bottom: 12px; }
+  .voice-dialog .voice-orb { width: 136px; height: 136px; margin-bottom: 24px; }
+}
+/* Keep every header action visible at 320px; center the title in the free space. */
+@media (max-width: 360px) {
+  .phone.ai-mode:not(.conversation-page)>header h1 {
+    position: static; transform: none; flex: 1; max-width: none; min-width: 0;
+  }
+  .phone.ai-mode:not(.conversation-page)>header #page-title { font-size: 16px; }
+  .phone.ai-mode:not(.conversation-page)>header #intercom,
+  .phone.ai-mode:not(.conversation-page)>header #sound { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-mode #ai-page .ai-welcome::before, .voice-dialog .orb-core, .voice-dialog .orb-core::after { animation: none; }
+}
+
+/* Business assistant annotations; shared sizing applies at every viewport. */
+.phone.ai-mode #ai-page .ai-welcome h2 {
+  max-width: 100%; font-size: 22px; line-height: 1.6; text-wrap: balance;
+  background: var(--ai-title-gradient) !important;
+  background-clip: text !important; -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+.ai-mode #ai-page .ai-recommendations h3 { display: flex; align-items: center; gap: 7px; }
+.business-ideas-icon {
+  width: 18px; height: 18px; flex: 0 0 18px; background: var(--ai-title-gradient);
+  mask: url('../icons/lightbulb-fill.svg') center / contain no-repeat;
+  -webkit-mask: url('../icons/lightbulb-fill.svg') center / contain no-repeat;
+}
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet),
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) :is(.composer, footer nav, .capsule, .bubble, .ai-prompt-list button),
+.phone:has(#utility.voice-dialog[open]) .capsule,
+.phone:has(#history-drawer[open]) .capsule,
+.phone.task-chat-sheet.processing #chat,
+#utility.voice-dialog, .voice-dialog .voice-controls .icon-button { border: 0; }
+#history-drawer .drawer-header { margin-bottom: 20px; }
+#history-drawer .drawer-header h2 { font-size: 16px; font-weight: 600; letter-spacing: 0; }
+#history-drawer .history-list { margin-top: 0; }
+#history-drawer .history-row { min-height: 52px; padding: 14px 0; border: 0; }
+#history-drawer .history-copy strong { font-size: 14px; font-weight: 400; line-height: 1.7; }
+@media (max-width: 360px), (max-height: 720px) {
+  .phone.ai-mode #ai-page .ai-welcome h2 { font-size: 20px; }
+  .ai-mode #ai-page .ai-welcome { gap: 16px; }
+}
+
+/* Airier conversation canvas and display typography, limited to the AI page. */
+@font-face {
+  font-family: 'DingTalk JinBuTi';
+  src: url('../fonts/DingTalk_JinBuTi_Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+.phone.ai-mode {
+  --ai-ambient: radial-gradient(ellipse 100% 52% at 0% 0%, rgb(190 220 255 / 66%), transparent 76%),
+    radial-gradient(ellipse 90% 46% at 100% 12%, rgb(213 198 255 / 58%), transparent 78%),
+    #fcfdff;
+}
+.phone.ai-mode #page-title,
+.phone.ai-mode #ai-page .ai-welcome h2 {
+  font-family: inherit;
+  font-weight: 600;
+  font-synthesis: none;
+}
+
+/* More visible primary-colour diffusion, shared by AI and task conversations. */
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) {
+  --ai-ambient:
+    radial-gradient(ellipse 110% 65% at 0% 0%, rgb(114 134 255 / 44%) 0%, transparent 74%),
+    radial-gradient(ellipse 95% 58% at 100% 14%, rgb(149 155 255 / 30%) 0%, transparent 76%),
+    linear-gradient(180deg, #f2f4ff 0%, #f8f9fd 58%, #ededf7 100%);
+}
+.phone.conversation-page #chat { background:transparent; }
+.phone.task-chat-sheet.processing #chat { background:var(--ai-ambient); }
+.phone:is(.ai-mode, .conversation-page, .task-chat-sheet) .message .bubble {
+  border:0;
+  box-shadow:none;
+}
+
+/* A frosted task summary sits above the flat conversation bubbles. */
+.phone.conversation-page #context .task-card {
+  background:var(--task-glass-surface);
+  backdrop-filter:var(--task-glass-filter);
+  -webkit-backdrop-filter:var(--task-glass-filter);
+  border:1px solid rgb(255 255 255 / 90%);
+  box-shadow:var(--task-glass-shadow), var(--task-glass-edge);
+}
+/* The chat offset owns the complete 16px gap, with no extra message padding. */
+.phone.conversation-page.processing #messages { padding-top:0; }
+
+.business-message-text { margin:0 0 12px; white-space:pre-line; }
+.business-message-text:last-child { margin-bottom:0; }
+.chat-avatar-photo { width:144px; height:144px; object-fit:cover; border-radius:16px; }
+.agent-card-preview { position:relative; isolation:isolate; overflow:hidden; border-radius:20px; padding-top:112px; background:#f5f6fa; }
+.agent-card-cover { position:absolute; inset:0; z-index:-1; width:100%; height:100%; object-fit:cover; object-position:center; }
+.agent-card-copy { position:relative; margin:0 12px 12px; padding:0 16px 20px; border-radius:24px; background:rgb(244 247 250 / 78%); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); text-align:center; }
+.agent-card-avatar { position:relative; top:-32px; width:72px; height:72px; margin:0 auto -22px; border:2px solid white; border-radius:50%; object-fit:cover; }
+.agent-card-copy h3 { margin:6px 0 8px; font-size:20px; line-height:28px; }
+.agent-card-copy .agent-card-role { margin:0; color:#7286ff; font-size:13px; line-height:22px; }
+.agent-card-copy .agent-card-bio { margin:14px 0 0; font-size:13px; line-height:22px; white-space:pre-line; }
+.agent-card-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-top:10px; }
+.agent-card-tags span { border-radius:4px; padding:3px 6px; background:#7286ff; color:white; font-size:11px; line-height:16px; font-weight:600; }
+.agent-card-tags span:nth-child(2) { background:#2dbdff; }
+.agent-card-items { margin-top:12px; font-size:13px; }
+.agent-card-items > div { display:flex; justify-content:space-between; gap:12px; padding:8px 0; }
+/* Match the tourist-side chat suggestions: natural-width white quick actions. */
+.agent-card-shortcuts { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 4px; }
+.phone .agent-card-shortcuts button { display:inline-flex; align-items:center; gap:5px; margin:0; min-height:40px; padding:8px 12px; border:0; border-radius:999px; background:#fff; color:var(--ai-ink); white-space:nowrap; font-size:14px; font-weight:400; text-align:left; }
+.phone .agent-card-shortcuts button:disabled { opacity:.55; cursor:default; }
+.business-card-result { margin-bottom:18px; }
+/* The summary and messages share one scroll surface in the card onboarding. */
+.phone:is(.business-card-conversation,.trip-plan-conversation) .workspace { overflow-y:auto; overscroll-behavior:contain; scrollbar-width:none; }
+.phone:is(.business-card-conversation,.trip-plan-conversation) #context { position:relative; inset:auto; margin:20px 16px 16px; }
+.phone:is(.business-card-conversation,.trip-plan-conversation).processing #chat { position:static; inset:auto; overflow:visible; }
+.phone:is(.business-card-conversation,.trip-plan-conversation) #messages { overflow:visible; flex:none; }
+.phone.business-card-conversation>header h1 { max-width:calc(100% - 180px); }
+.phone.business-card-conversation>header #page-title { font-size:16px; }
+.phone:is(.business-card-conversation,.trip-plan-conversation) #context .task-title { font-size:18px; }
+.business-item-form { display:grid; gap:16px; }
+.business-item-form label { display:grid; gap:8px; font-size:14px; }
+.business-item-form :is(input,textarea) { width:100%; border:1px solid #e1e5f3; border-radius:12px; padding:12px; font:inherit; background:#f7f8ff; color:#282b38; }
+
+.phone .agent-card-shortcuts button img { width:14px; height:14px; flex:none; }
+.agent-service-card { overflow:hidden; border-radius:20px; background:white; }
+.agent-service-card > img { width:100%; height:150px; object-fit:cover; }
+.agent-service-copy { padding:16px; }
+.agent-service-type { color:#7286ff; font-size:12px; }
+.agent-service-copy h3 { margin:8px 0; font-size:18px; line-height:26px; }
+.agent-service-copy p, .agent-service-copy dd { margin:0; font-size:14px; line-height:24px; color:#626b7b; }
+.agent-service-price { display:block; margin-top:12px; color:#7286ff; font-size:24px; }
+.agent-service-price small { font-size:12px; font-weight:400; color:#626b7b; }
+.agent-service-copy dl { margin:16px 0 0; }
+.agent-service-copy dt { font-size:14px; font-weight:600; margin:12px 0 4px; }
+/* Keep the input dock and heading in view on shorter desktop preview windows. */
+@media(min-width:431px) { .phone:is(.business-card-conversation,.trip-plan-conversation) { max-height:calc(100dvh - 36px); } }
+
+/* Conversation previews reuse the storefront service card. */
+.business-service-list .service-card { position:relative; }
+.business-service-list .service-detail-entry { margin-left:auto; border:0; background:transparent; color:#6479ef; font:inherit; font-size:12px; padding:6px 0; }
+.business-service-list .service-detail-entry::after { content:""; position:absolute; inset:0; border-radius:17px; }
+.business-service-list .service-card:has(.service-detail-entry:focus-visible) { outline:2px solid var(--ai-brand); outline-offset:2px; }
+
+/* Trip summary remains part of the conversation's single scrolling column. */
+.phone.trip-plan-conversation #context .task-card .advice { display:block; -webkit-line-clamp:unset; overflow:visible; }
+.phone.trip-plan-conversation #chat .agent-card-shortcuts { margin-top:16px; }
+
+.phone.trip-plan-conversation #messages { overscroll-behavior:auto; }
+
+/* History search remains above the scrolling conversation list. */
+#history-drawer .drawer-header { margin-bottom:16px; }
+.history-search { display:flex; align-items:center; gap:8px; flex:none; height:42px; padding:0 12px; margin-bottom:12px; background:#eff0f5; border-radius:12px; color:#8a8fa0; }
+.history-search > svg { width:18px; height:18px; flex:none; }
+.history-search input { width:100%; min-width:0; padding:0; background:transparent; border:0; outline:none; font:inherit; font-size:14px; color:var(--ai-ink); }
+.history-search input::placeholder { color:#8a8fa0; }
+.history-search input::-webkit-search-cancel-button { -webkit-appearance:none; }
+.history-search:focus-within { box-shadow:0 0 0 2px rgb(114 134 255 / 25%); }
+#history-search-clear { display:grid; place-items:center; flex:none; width:24px; height:28px; padding:0; }
+#history-search-clear img { width:16px; height:16px; opacity:.5; }
+#history-drawer .history-row[hidden], #history-search-clear[hidden], #history-search-empty[hidden] { display:none; }
+#history-search-empty { color:var(--ai-muted); font-size:14px; text-align:center; margin:20px 0; }
+
+/* Align conversation controls with the task header's right-side anchors. */
+.phone:is(.ai-mode,.conversation-page)>header #sound{position:absolute;right:87px;margin:0}
+.phone:is(.ai-mode,.conversation-page)>header #intercom{position:absolute;left:auto;right:117px;margin:0}
+@media(max-width:360px){
+  .phone:is(.ai-mode,.conversation-page)>header #sound{right:85px}
+  .phone:is(.ai-mode,.conversation-page)>header #intercom{right:111px}
+  .phone.ai-mode:not(.conversation-page)>header{padding-right:137px}
+}
+/* The search container owns the focus ring; avoid a second ring around its text. */
+.phone #history-drawer #history-search:is(:focus,:focus-visible){outline:none;box-shadow:none}

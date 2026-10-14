@@ -1,0 +1,52 @@
+/* Trip dialogue uses real paragraphs and lists without changing other conversations. */
+.phone.trip-plan-conversation .bubble.trip-reply { white-space:normal; }
+.trip-reply p { margin:0 0 12px; }
+.trip-reply p:last-child { margin-bottom:0; }
+.trip-reply-section { margin:20px 0; }
+.trip-reply-section:last-child { margin-bottom:0; }
+.trip-reply-section h3 { margin:0 0 10px; font-size:inherit; line-height:1.65; font-weight:600; }
+.trip-reply-section ul { margin:0; padding-left:20px; list-style:disc; }
+.trip-reply-section li { padding-left:2px; }
+.trip-reply-section li + li { margin-top:8px; }
+.trip-reply-section li::marker { color:#8991ae; font-size:.8em; }
+.phone .trip-document-card { display:flex; align-items:center; gap:12px; width:100%; padding:8px; margin:12px 0 18px; border:1px solid #fff; border-radius:20px; background:rgb(255 255 255 / 55%); color:#242630; text-align:left; }
+.phone .trip-document-card > img { width:72px; height:72px; flex:none; border-radius:12px; object-fit:cover; }
+.trip-document-card > span { display:grid; gap:4px; flex:1; min-width:0; }
+.trip-document-card strong { display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-size:14px; line-height:21px; font-weight:500; }
+.trip-document-card small { font-size:12px; line-height:18px; color:#667085; }
+.trip-document-card b { font-size:16px; line-height:22px; font-weight:500; color:#ff4164; }
+.trip-document-card b > span { font-size:12px; }
+/* Tourist-side PlanOverview: article heading, daily cards, activity timeline. */
+#utility.trip-document-detail { background:white; color:#242630; }
+#utility.trip-document-detail .dialog-head { background:white; height:56px; min-height:56px; }
+#utility.trip-document-detail .dialog-head h2 { visibility:hidden; }
+#utility.trip-document-detail #utility-body { padding:0 0 max(28px,env(safe-area-inset-bottom)); scrollbar-width:none; }
+.phone:has(.trip-document-detail[open]) > .statusbar { background:white; }
+.trip-document-detail .plan-introduction { margin:0; padding:16px; background:white; }
+.trip-document-detail .plan-introduction h1 { display:block; white-space:normal; font-size:18px; line-height:1.5; margin:0 0 16px; font-weight:500; letter-spacing:0; }
+.trip-document-detail .plan-introduction p { margin:0; font-size:14px; line-height:1.8; color:#667085; }
+.trip-document-detail .plan-introduction .plan-author { margin-bottom:6px; color:#7286ff; }
+.trip-document-detail .plan-section { margin:0; padding:24px 16px; border-top:10px solid #f4f5f7; background:white; }
+.trip-document-detail .plan-section h2 { display:flex; align-items:center; gap:8px; font-size:16px; line-height:1.5; font-weight:500; margin:0 0 16px; }
+.trip-detail-icon { display:block; width:21px; height:21px; flex:none; color:#7286ff; background:currentColor; mask:var(--detail-icon) center/contain no-repeat; -webkit-mask:var(--detail-icon) center/contain no-repeat; }
+.trip-document-detail .plan-section h2 > .trip-detail-icon { width:17px; height:17px; }
+.trip-document-detail .plan-day-list { display:grid; gap:14px; }
+.trip-document-detail .plan-day-card { border:1px solid #e9ecff; border-radius:20px; padding:15px; background:#fafbff; }
+.trip-document-detail .plan-day-card header { display:flex; height:auto; padding:0; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px; }
+.trip-document-detail .plan-day-heading { display:flex; align-items:center; gap:8px; }
+.trip-document-detail .plan-day-badge { display:grid; place-items:center; min-width:32px; height:30px; padding:0 5px; border-radius:8px; background:#edf0ff; color:#7286ff; font-size:16px; font-weight:500; }
+.trip-document-detail .plan-day-heading h3 { margin:0; font-size:16px; font-weight:500; white-space:nowrap; }
+.trip-document-detail .plan-day-card > h3 { font-size:16px; line-height:1.65; }
+.trip-document-detail .plan-day-card p { font-size:14px; line-height:1.75; color:#667085; margin:14px 0 0; }
+.trip-document-detail .plan-timeline { list-style:none; margin:20px 0 0; padding:0; }
+.trip-document-detail .plan-timeline-item { position:relative; display:grid; grid-template-columns:24px minmax(0,1fr); column-gap:12px; padding-bottom:24px; }
+.trip-document-detail .plan-timeline-item:not(:last-child)::before { content:''; position:absolute; left:11px; top:30px; bottom:6px; width:1px; background:#e6e9f2; }
+.trip-document-detail .plan-timeline-item:last-child { padding-bottom:0; }
+.trip-document-detail .plan-timeline-icon { display:grid; place-items:center; width:24px; height:24px; }
+.trip-document-detail .plan-timeline-content { min-width:0; }
+.trip-document-detail .plan-timeline-content h4 { margin:0; font-size:16px; font-weight:500; line-height:24px; }
+.trip-document-detail .plan-timeline-content time { font-variant-numeric:tabular-nums; }
+.trip-document-detail .plan-timeline-content p { margin:10px 0 0; line-height:1.8; }
+.trip-document-detail .plan-day-service-note { padding-top:12px; }
+
+.trip-document-detail .plan-fees p { margin:0; font-size:14px; line-height:1.8; color:#667085; }

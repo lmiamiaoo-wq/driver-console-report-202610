@@ -1,23 +1,35 @@
-# 发布服务设计核对
+# 头像名片与服务对话 QA
 
-- Source: `/Users/pengpeng/Desktop/截屏2026-09-29 10.12.53.png` (427 × 759 px).
-- Implementation: `http://localhost:5173/`, 我的 → 橱窗 → 发布; in-app browser tab 5 screenshot captured in this task. The browser screenshot is displayed inline in the task and has no separate file path.
-- Viewport: fixed 390 × 844 CSS px phone canvas, shown in a 1422 × 800 desktop preview. Compared the app-owned screen, excluding the surrounding desktop canvas.
-- State: empty new service form, 日包车 selected.
+- Source visual truth: `/Users/pengpeng/Desktop/截屏2026-10-12 20.58.25.png` (177 × 62 button crop); `/var/folders/_9/rrf9h00s75l4hl88c1qbdkvr0000gn/T/TemporaryItems/NSIRD_screencaptureui_QY2fVQ/截屏2026-10-12 21.02.40.png` (282 × 279 card crop).
+- Implementation: `qa/avatar-business-card-final.png`, `qa/avatar-business-card-phone.png`, `qa/qingyan-service-preview.png`.
+- Combined comparison: `qa/avatar-reference-comparison.png`. Reference and implementation card placed side by side; 358 CSS px implementation card normalized to 282 px reference width. Source screenshot density is unspecified, treated as 1×. Browser screenshot 1280 × 720 at 1×, phone content 390 × 684 CSS px. Earlier check used a 490 × 792 viewport.
+- State: generated personal card with untouched shortcut actions; service preview after three conversational answers.
 
-## Comparison
+## Findings
+No remaining actionable P0/P1/P2 differences. Same source avatar and waterfall photography are reused from the tourist project. Card retains layered scenery, floating circular portrait, centered identity, brand role, colored tags and translucent rounded profile panel. Buttons are white pills with the standard Phosphor northeast arrow. Current driver name, two previously requested tags and polished longer bio intentionally replace the reference's sample content.
 
-- Typography: 18 px title, compact 14 px labels, 16 px editable inputs. Hierarchy and copy follow the reference.
-- Layout: type and price share the first white card; image, title, description, service location and AI action share the second card. Spacing and rounded corners follow the reference. A visible bottom publish button is retained for mobile task completion.
-- Color: white cards on a cool pale background, with a blue selected type and AI action. The price currency mark is red as in the reference.
-- Assets: the empty upload slot uses the project's Phosphor plus icon; service location and AI actions use Phosphor map-pin and sparkle icons. No content image is shown before selection.
-- Behavior: tested type switch updates `/半天` to `/次`; AI fills image, title, description and location; entering a price and publishing creates a storefront card with the correct unit. JavaScript syntax check passed.
+## Comparison history
+- P2: fixed 844px phone canvas extended below shorter desktop windows. Added a max-height to the business-card conversation at desktop widths. Recaptured at 1280 × 720; persistent header and input are both visible, and the conversation scrolls independently.
+- Final combined comparison checks typography, spacing, color, source photo quality and copy. No further blocking drift. Card height adapts to the longer bio; this is an intentional content accommodation.
 
-## Iteration history
+## Interaction verification
+- Input click prefills introduction; AI requests a personal portrait after 5s, example portrait and card follow at 5s intervals.
+- Add service stays in conversation and asks about route/capacity, then price/inclusions, then booking/process/amenities.
+- All three answers prefill on click and remain editable. Replies arrive asynchronously after 5s.
+- Service preview includes user-provided text and numeric price, with add/edit controls.
+- Add to card inserts the service once; completed shortcuts disappear and the next reply confirms the addition without repeating the identity card.
+- Node VM checks: 5000ms timers, invalid-price retry, custom 280-yuan price preserved, edit retains draft data. JS syntax check passed; browser console errors: none.
 
-1. Initial capture revealed a broken image label and gray overlay in the empty upload slot. Hid the empty image element and removed the overlay background.
-2. Increased editable description and location text to 16 px and kept touch targets at least 44 px. Subsequent capture shows the clean empty upload slot and complete form layout.
-
-No remaining P0, P1 or P2 findings. The fixed mobile canvas is narrower and taller than the source screenshot; region proportions and interaction layout remain consistent.
+## Follow-up polish
+None required. Prototype data remains in memory as in the existing application.
 
 final result: passed
+
+## Latest annotation verification
+- Removed composer focus ring and text-input outline; computed focus outline is `none`, while the existing light composer shadow remains.
+- Shortcuts disappear after selecting the next action or beginning a new text answer, and remain hidden when reopening the conversation.
+- Conversation service preview and My storefront now share `serviceCardMarkup` and responsive card styles. Preview is a horizontal image/text/price card; clicking it opens route, fees and booking details.
+- Saved service appears once in My storefront. The reply is exactly “已添加到名片主页”; only the original identity preview remains in conversation history.
+- Fresh next-step shortcuts remain available below the successful confirmation until another answer begins.
+- Verified full conversation through actual 5-second timers at 490 × 792 viewport, including opening/closing details and visiting My storefront. Console errors: none. JavaScript syntax checks passed.
+- Updated screenshots: `qa/service-summary-preview.png`, `qa/service-added-confirmation.png`.

@@ -1,0 +1,107 @@
+/* Account landing and owner homepage, aligned with the tourist Storefront. */
+#profile-page{background:#f5f5f5}
+.account-cover{height:204px;position:relative;overflow:hidden;background:#a7b7bf}
+.account-cover>img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.account-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(#0003,transparent 65%)}
+.account-content{position:relative;z-index:1;margin-top:-128px;padding:0 16px 24px}
+.account-identity{display:flex;align-items:center;gap:16px;width:100%;min-height:104px;padding:20px 4px;text-align:left}
+.account-identity .profile-avatar{width:64px;height:64px;border:2px solid white;flex-shrink:0}
+.account-identity>strong{color:#fff;text-shadow:0 1px 5px #0005;min-width:0;flex:1;font-size:24px;line-height:1.4;font-weight:500;overflow-wrap:anywhere}
+.account-chevron{width:20px;height:20px;opacity:.5;flex-shrink:0}
+.account-orders{padding:6px 16px 17px;border-radius:18px;background:#fff}
+.account-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.account-section-heading h2{margin:0;font-size:17px;font-weight:600}
+.account-section-heading>button{display:flex;align-items:center;gap:4px;min-height:44px;padding:0;font-size:14px;color:#7b808b}
+.account-section-heading>button .account-chevron{width:16px;height:16px}
+.account-order-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:8px}
+.account-order-links button{display:grid;grid-template-rows:30px auto;align-items:center;justify-items:center;gap:10px;padding:6px 0;font-size:13px;white-space:nowrap;min-height:66px}
+.account-order-links .account-order-icon{display:block;width:40px;height:40px;overflow:hidden;transform:scale(var(--order-icon-scale,.88));transform-origin:center}
+.account-order-links [data-profile-orders="进行中"]{--order-icon-scale:1.2}
+.account-order-links [data-profile-orders="退款/售后"]{--order-icon-scale:.78}
+.account-menu{margin-top:16px;padding:0 16px;background:#fff;border-radius:18px}
+.account-menu>button{display:flex;align-items:center;gap:14px;min-height:58px;padding:0;width:100%;text-align:left}
+.account-menu>button>img:first-child{width:26px;height:26px;flex-shrink:0}
+.account-menu>button+button{border-top:1px solid #f3f4f7}
+.account-menu>button>span{flex:1;font-size:16px}
+#utility.personal-homepage{inset:0;height:100%;background:#f5f5f5}
+#utility.profile-detail:has(#service-edit-form){background:#f5f5f5}
+.account-identity>.account-chevron{filter:brightness(0) invert(1);opacity:1}
+#utility.personal-homepage .dialog-head{position:absolute;top:38px;left:0;right:0;z-index:4;height:56px;min-height:56px;pointer-events:none;background:transparent}
+#utility.personal-homepage .dialog-head h2{display:none}
+#utility.personal-homepage #utility-close{pointer-events:auto;top:8px;left:12px;width:38px;height:38px;border-radius:50%;background:#ffffff38}
+#utility.personal-homepage #utility-close img{filter:brightness(0) invert(1)}
+#utility.personal-homepage #utility-body{position:relative;padding:0 0 34px;scrollbar-width:none}
+.phone:has(.personal-homepage[open])>.statusbar{position:absolute;inset:0 0 auto;z-index:24;background:linear-gradient(#0003,transparent);color:white;pointer-events:none}
+.phone:has(.personal-homepage[open])>.statusbar img{filter:brightness(0) invert(1)}
+.phone:has(.personal-homepage[open]) .miniapp-controls>.capsule{background:#ffffff26;border-color:#ffffff70}
+.phone:has(.personal-homepage[open]) .miniapp-controls>.capsule img{filter:brightness(0) invert(1)}
+.phone:has(.personal-homepage[open]) .miniapp-controls>.capsule i{border-color:#ffffff70}
+.homepage-cover{height:318px;position:relative;overflow:hidden;background:#727b91}
+.homepage-cover>img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.homepage-cover::after{position:absolute;inset:0;content:'';background:linear-gradient(180deg,#00000047,#0000000d 46%,#00000061)}
+.homepage-actions{position:absolute;top:44px;right:104px;z-index:5;display:flex;align-items:center;gap:4px;color:#fff}
+.homepage-actions>button{min-height:44px;font-size:14px;padding:0 10px}
+.homepage-actions>.icon-button{width:36px;padding:0}
+.homepage-actions img{width:21px;height:21px;filter:brightness(0) invert(1)}
+.homepage-flow{position:relative;margin-top:-160px;padding:0 16px;z-index:2}
+.homepage-guide{position:relative;padding:52px 16px 20px;text-align:center;border-radius:24px;background:linear-gradient(180deg,#ffffffc2,#ffffff94),linear-gradient(135deg,#ffffff42,#7286ff14);backdrop-filter:blur(30px) saturate(1.18);-webkit-backdrop-filter:blur(30px) saturate(1.18)}
+.homepage-guide>.homepage-card-share{position:absolute;top:16px;right:16px;width:36px;height:36px;padding:0;background:transparent;box-shadow:none}
+.homepage-card-share img{width:22px;height:22px}
+.homepage-guide>.profile-avatar{position:absolute;top:-40px;left:calc(50% - 40px);width:80px;height:80px;border:2px solid #fffffff2}
+.homepage-guide h2{font-size:22px;line-height:1.2;font-weight:500;margin:0;overflow-wrap:anywhere}
+.homepage-role{font-size:14px;line-height:1.5;color:#7286ff;margin:6px 0 0}
+.homepage-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:8px}
+.homepage-tags>span{background:#7286ff;color:#fff;border-radius:4px;padding:3px 7px;font-size:12px;line-height:1.5}
+.homepage-tags>span+span{background:#2dbdff}
+.homepage-bio{font-size:14px;line-height:1.5;margin:12px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.homepage-stats{display:flex;align-items:center;justify-content:space-around;gap:16px;margin-top:18px}
+.homepage-stats>div{display:grid;gap:4px}
+.homepage-stats strong{font-size:18px;line-height:1.4;font-weight:500}
+.homepage-stats span{font-size:12px;color:#7b808b}
+.homepage-store{padding:24px 16px 0}
+.homepage-store-heading{position:relative;margin-bottom:16px}
+.homepage-filters{display:flex;align-items:stretch;justify-content:center;gap:64px;margin:0;padding:0;background:transparent;border-radius:0;height:auto}
+.homepage-filters button{position:relative;min-height:44px;padding:0;font-size:16px;color:#858b95;border-radius:0;background:transparent}
+.homepage-filters [aria-selected=true]{font-weight:500;color:#242630}
+.homepage-filters [aria-selected=true]::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:2px;background:#7286ff}
+.homepage-publish{position:absolute;right:0;top:0;display:flex;align-items:center;gap:3px;min-height:44px;font-size:12px;padding:0;color:#7286ff}
+.homepage-publish img{width:15px;height:15px}
+.homepage-products{display:grid;gap:16px}
+.homepage-product{position:relative;display:grid;grid-template-columns:28% minmax(0,1fr);gap:12px;padding:12px;border-radius:16px;background:#fff;overflow:hidden}
+.homepage-product-open{position:absolute;inset:0;width:100%;height:100%;z-index:1;border-radius:inherit}
+.homepage-product-image,.homepage-product-placeholder{width:100%;height:96px;border-radius:8px;object-fit:cover}
+.homepage-product-placeholder{display:grid;place-items:center;background:#e9ecf4;font-size:12px;color:#7b808b}
+.homepage-product-copy{min-height:96px;min-width:0;display:flex;flex-direction:column}
+.homepage-product-copy h3{margin:0;font-size:16px;line-height:1.5;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.homepage-product-copy>p{font-size:14px;line-height:1.5;color:#858b95;margin:4px 0 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.homepage-product-bottom{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:auto;min-height:32px}
+.homepage-product-bottom>b{display:flex;align-items:baseline;gap:0;white-space:nowrap;color:#ff4164;font-size:20px;line-height:1.2;font-weight:500}
+.homepage-product-bottom>b small{font-size:14px;font-weight:400}
+.homepage-product-manage{position:relative;z-index:2;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.homepage-product-manage button{min-height:32px;color:#7b808b;font-size:12px;padding:0}
+@media(max-width:360px){.homepage-product-bottom>b{font-size:18px}.homepage-product-bottom>b small{font-size:12px}.homepage-product-manage{gap:6px}}
+.profile-share-status{font-size:14px;color:#6276ec;text-align:center}
+@media(max-width:360px){.account-cover{height:180px}.account-content{padding-left:12px;padding-right:12px}.account-orders{padding-left:12px;padding-right:12px}.account-order-links button{font-size:12px}.homepage-actions{right:96px;gap:0}.homepage-actions>button{padding:0 7px}.homepage-flow{padding:0 12px}.homepage-store{padding-left:12px;padding-right:12px}}
+
+/* Keep owner actions and back navigation visible while the storefront scrolls. */
+#utility .homepage-actions{display:none}
+#utility.personal-homepage .homepage-actions{display:flex;top:6px;pointer-events:auto}
+#utility.personal-homepage.homepage-scrolled .dialog-head{background:#fff}
+#utility.personal-homepage.homepage-scrolled #utility-close{background:transparent}
+#utility.personal-homepage.homepage-scrolled #utility-close img,#utility.personal-homepage.homepage-scrolled .homepage-actions img{filter:none}
+#utility.personal-homepage.homepage-scrolled .homepage-actions{color:#242630}
+.phone:has(.personal-homepage.homepage-scrolled[open])>.statusbar{background:#fff;color:#242630}
+.phone:has(.personal-homepage.homepage-scrolled[open])>.statusbar img{filter:none}
+.phone:has(.personal-homepage.homepage-scrolled[open]) .miniapp-controls>.capsule{background:#ffffffd9;border-color:#dfe1e5}
+.phone:has(.personal-homepage.homepage-scrolled[open]) .miniapp-controls>.capsule img{filter:none}
+.phone:has(.personal-homepage.homepage-scrolled[open]) .miniapp-controls>.capsule i{border-color:#dfe1e5}
+
+/* Neutral, consistent actions on order cards and order details. */
+.phone .profile-order-actions>a,.phone .profile-order-actions>button{height:32px;min-height:32px;border:1px solid #e7e9f0;border-radius:16px;background:#fff;color:inherit;box-shadow:none}
+
+/* Group wallet transactions on the same white surface as account cards. */
+.wallet-bills{padding:0 16px;background:#fff;border-radius:18px}
+.wallet-bills .wallet-bill:last-child{border-bottom:0}
+.wallet-bills .wallet-bill-icon{background:#f5f6fa;flex-shrink:0}
+.wallet-bills .wallet-bill>span:nth-child(2){min-width:0}
+.wallet-bills .wallet-bill>b{white-space:nowrap}
