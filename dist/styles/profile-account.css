@@ -44,7 +44,7 @@
 .homepage-actions>.icon-button{width:36px;padding:0}
 .homepage-actions img{width:21px;height:21px;filter:brightness(0) invert(1)}
 .homepage-flow{position:relative;margin-top:-160px;padding:0 16px;z-index:2}
-.homepage-guide{position:relative;padding:52px 16px 20px;text-align:center;border-radius:24px;background:linear-gradient(180deg,#ffffffc2,#ffffff94),linear-gradient(135deg,#ffffff42,#7286ff14);backdrop-filter:blur(30px) saturate(1.18);-webkit-backdrop-filter:blur(30px) saturate(1.18)}
+.homepage-guide{box-shadow:0 8px 24px rgb(40 51 84 / 6%),0 2px 6px rgb(40 51 84 / 3%);position:relative;padding:52px 16px 20px;text-align:center;border-radius:24px;background:linear-gradient(180deg,#ffffffc2,#ffffff94),linear-gradient(135deg,#ffffff42,#7286ff14);backdrop-filter:blur(30px) saturate(1.18);-webkit-backdrop-filter:blur(30px) saturate(1.18)}
 .homepage-guide>.homepage-card-share{position:absolute;top:16px;right:16px;width:36px;height:36px;padding:0;background:transparent;box-shadow:none}
 .homepage-card-share img{width:22px;height:22px}
 .homepage-guide>.profile-avatar{position:absolute;top:-40px;left:calc(50% - 40px);width:80px;height:80px;border:2px solid #fffffff2}
@@ -73,7 +73,7 @@
 .homepage-product-placeholder{display:grid;place-items:center;background:#e9ecf4;font-size:12px;color:#7b808b}
 .homepage-product-copy{min-height:96px;min-width:0;display:flex;flex-direction:column}
 .homepage-product-copy h3{margin:0;font-size:16px;line-height:1.5;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.homepage-product-copy>p{font-size:14px;line-height:1.5;color:#858b95;margin:4px 0 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.homepage-product-copy>p{font-size:14px;line-height:1.5;color:#858b95;margin:4px 0 0;display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
 .homepage-product-bottom{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:auto;min-height:32px}
 .homepage-product-bottom>b{display:flex;align-items:baseline;gap:0;white-space:nowrap;color:#ff4164;font-size:20px;line-height:1.2;font-weight:500}
 .homepage-product-bottom>b small{font-size:14px;font-weight:400}

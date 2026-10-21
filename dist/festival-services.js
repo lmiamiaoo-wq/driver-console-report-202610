@@ -16,6 +16,8 @@ function renderBusinessAIMessage(message,index,messages,owner){
  const text=message.streaming?message.visibleText:message.text;
  const bubble=`<div class="message ${message.role}"><div class="bubble">${message.role==='ai'?formatAIMessage(text):esc(text)}</div></div>`;
  if(message.role!=='ai'||message.streaming)return bubble;
+ if(message.kind==='promotion-options')return bubble+promotionSelectionCard(owner);
+ if(message.kind==='promotion-summary')return bubble+promotionHomepageShortcut();
  if(message.kind==='station-task'&&message.task)return bubble+renderStationTaskCard(message.task);
  if(['weekly-report','halfday-preview'].includes(message.kind))return renderWeeklyMessage(message,owner);
  let extra='';

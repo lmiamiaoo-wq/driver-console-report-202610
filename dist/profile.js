@@ -1,6 +1,101 @@
 // Personal storefront; like the rest of the prototype, changes live in memory.
-const profileInfo={name:'杨通海',bio:'跑遍黔山秀水，为你精选地道景点和美食',avatar:'images/avatar.jpg',cover:'images/system-cover-1.png'};
-let services=[{id:'scenic',type:'日包车',title:'贵阳出发|按天包车（0.5天起）|省内纯玩',content:'0.5天（4小时）起订，以0.5天为计费单位递增。租期内行程路线由您自由安排，司导全程跟随，适合一日游、商务接送、半日短途等多种场景。',price:680,image:'images/service-day-charter.png'},{id:'transfer',type:'点对点包车',title:'贵阳出发｜点对点包车｜市区 / 景区 / 机场接送',content:'司导一体：本人10年以上本地驾龄司机，兼持证导游，开车讲解两不误\n路况熟：熟悉贵阳及周边（黄果树、荔波、西江千户苗寨、梵净山、兴义等）全部路线，避开拥堵\n纯玩承诺：无购物、无隐形消费，行程自由，随时停靠拍照\n车辆整洁：七座商务，每日清洁消毒，车内常备矿泉水、充电线、雨伞，最多承运6人4大件行李\n安全可靠：全额营运保险，驾驶记录良好，可提供资质核验',price:260,image:'images/service-point-to-point.png'}];
+const profileInfo={name:'杨通海',bio:polishBusinessIntroduction({introductionNotes:[businessCardDefaultIntroduction]}),avatar:'images/agent-avatar.png',cover:'images/system-cover-1.png'};
+let services=[{id:'scenic',type:'日包车',title:'按天包车',content:'贵阳出发·按天包车（0.5天起）·省内纯玩',price:900,priceUnit:'天',image:'images/service-day-charter.png'},{id:'transfer',type:'点对点包车',title:'定点包车',content:'贵阳出发·市区 / 景区 / 机场接送',price:260,image:'images/service-point-to-point.png'}];
+services.push({id:'anshun-21',category:'商品',type:'旅行线路',title:'安顺21℃计划2日游',content:'商务包车 / 司导服务 / 四钻住宿',price:1980,priceUnit:'人',image:'images/anshun-21-cover.png',detailImage:'images/anshun-21-detail.png',detailWidth:750,detailHeight:11261});
+services.push({id:'promotion-nature',category:'商品',type:'旅行线路',title:'自然珍宝奇趣之旅7天6晚大环线',content:'商务包车 / 司导服务 / 优选餐厅',price:3980,priceUnit:'人',image:'images/promotion-nature-cover.png',detailImage:'images/promotion-nature-detail.jpg',detailWidth:750,detailHeight:13691});
+const homepageServiceSections={
+  "scenic": [
+    {
+      "title": "服务描述",
+      "text": "贵阳出发·按天包车（0.5天起）·省内纯玩\n0.5天（4小时）起订，以0.5天为计费单位递增。租期内行程路线由您自由安排，司导全程跟随，适合一日游、商务接送、半日短途等多种场景。"
+    },
+    {
+      "title": "计费说明",
+      "items": [
+        "起步0.5天，超出后按0.5天为单位向上取整（如5小时按1天计，9小时按1.5天计）",
+        "超里程：超出包含里程部分，按车型费率加收（5座3元/km、7座4元/km、9座5元/km）",
+        "超时长：超出包含时长部分，按车型费率加收（5座50元/h、7座60元/h、9座70元/h）",
+        "服务时间：07:00–22:00；22:00–次日06:00 夜间服务加收50元/次"
+      ]
+    },
+    {
+      "title": "费用包含",
+      "items": [
+        "车辆使用费、燃油费",
+        "专业司导服务费（兼司机+导游）",
+        "每日包含里程内的油费",
+        "车内矿泉水、充电线、湿巾"
+      ]
+    },
+    {
+      "title": "费用不含",
+      "items": [
+        "高速过路费、停车费（实报实销）",
+        "景区门票、餐饮费用",
+        "司机食宿补贴：租期≥2天或异地过夜时，100元/天",
+        "个人消费及以上未提及项目"
+      ]
+    },
+    {
+      "title": "退改规则",
+      "items": [
+        "出发前24小时：免费取消或改期",
+        "出发前24小时内：收取30%违约金",
+        "服务开始后：不予退款",
+        "因天气/交通管制等不可抗力：全额退款或免费改期"
+      ]
+    },
+    {
+      "title": "温馨提示",
+      "items": [
+        "高峰期（节假日/周末）建议提前3–7天预订",
+        "如需儿童安全座椅请提前告知，免费提供",
+        "行程中如需更改目的地，请提前与司导协商，超出部分按标准加收"
+      ]
+    }
+  ],
+  "transfer": [
+    {
+      "title": "服务描述",
+      "text": "贵阳出发·市区 / 景区 / 机场接送\n司导一体：本人10年以上本地驾龄司机，兼持证导游，开车讲解两不误",
+      "items": [
+        "路况熟：熟悉贵阳及周边（黄果树、荔波、西江千户苗寨、梵净山、兴义等）全部路线，避开拥堵",
+        "纯玩承诺：无购物、无隐形消费，行程自由，随时停靠拍照",
+        "车辆整洁：七座商务，每日清洁消毒，车内常备矿泉水、充电线、雨伞，最多承运6人4大件行李",
+        "安全可靠：全额营运保险，驾驶记录良好，可提供资质核验"
+      ]
+    },
+    {
+      "title": "下单须知",
+      "items": [
+        "拍前请先咨询，确认日期、路线、人数后再付款",
+        "高峰期（节假日 / 周末）建议提前3–7天预订",
+        "出发前24小时可免费取消；24小时内取消收取30%违约金"
+      ]
+    },
+    {
+      "title": "包车流程",
+      "text": "下单付款-司机接单-沟通确认-接驾出发-行程结束"
+    },
+    {
+      "title": "计费方式",
+      "items": [
+        "点对点一口价：按实际行程耗时计算，起步含2小时基础服务",
+        "超时长：超出基础时长按50元 / 小时加收，不足1小时按1小时计",
+        "服务时段：07:00–22:00正常服务；22:00–次日06:00夜间服务加收夜间费",
+        "等待费：客户原因导致等待，超30分钟后按30元 / 小时计"
+      ]
+    },
+    {
+      "title": "费用说明",
+      "items": [
+        "费用含：车辆使用费、司机服务费、燃油费、景点讲解",
+        "费用不含：高速过路费（实报实销）、停车费、景区门票、司机食宿（跨天 / 异地时补贴 100 元 / 天）",
+        "夜间费：22:00–06:00 时段加收 50 元 / 次"
+      ]
+    }
+  ]
+};
 const serviceUnit=type=>type==='日包车'?'半天':'次';
 const serviceDrafts={日包车:{title:'贵阳出发|按天包车（0.5天起）|省内纯玩',content:'0.5天（4小时）起订，以0.5天为计费单位递增。租期内行程路线由您自由安排，司导全程跟随，适合一日游、商务接送、半日短途等多种场景。',location:'贵阳及周边',image:'images/service-day-charter.png'},点对点包车:{title:'贵阳出发｜点对点包车｜市区 / 景区 / 机场接送',content:'司导一体：本人10年以上本地驾龄司机，兼持证导游，开车讲解两不误。熟悉贵阳及周边路线，无购物、无隐形消费，七座商务车每日清洁消毒，最多承运6人和4大件行李。',location:'贵阳市区及周边',image:'images/service-point-to-point.png'}};
 const profilePage=document.createElement('section');profilePage.id='profile-page';profilePage.hidden=true;profilePage.setAttribute('aria-label','我的');$('.workspace').append(profilePage);
@@ -34,9 +129,9 @@ function renderProfile(){
  profilePage.scrollTop=scroll;
  refreshPersonalHomepage();
 }
-function storefrontProducts(){return storefrontFilter==='商品'?'<p class="profile-empty">暂无商品</p>':services.map(service=>`<article class="homepage-product"><button class="homepage-product-open" data-profile-service="${esc(service.id)}" aria-label="查看服务：${esc(service.title)}"></button>${service.image?`<img class="homepage-product-image" src="${esc(service.image)}" alt="${esc(service.title)}">`:'<span class="homepage-product-placeholder">暂无图片</span>'}<div class="homepage-product-copy"><h3>${esc(service.title)}</h3><p>${esc(service.content)}</p><div class="homepage-product-bottom"><b><small>￥</small>${Number(service.price).toLocaleString('zh-CN')}<small>/${esc(service.priceUnit||serviceUnit(service.type))}${service.priceFrom?' 起':''}</small></b><div class="homepage-product-manage"><button data-service-delete="${esc(service.id)}" aria-label="删除${esc(service.title)}">删除</button><button data-service-edit="${esc(service.id)}">编辑</button></div></div></div></article>`).join('')||'<p class="profile-empty">还没有发布服务</p>'}
-function personalHomepageBody(){return `<div class="homepage-cover"><img src="${esc(profileInfo.cover)}" alt="个人主页背景"></div><div class="homepage-flow"><article class="homepage-guide">${profileAvatar()}<button type="button" class="icon-button homepage-card-share" data-profile-share aria-label="分享主页"><img src="icons/share-network-primary.svg" alt=""></button><h2>${esc(profileInfo.name)}</h2><p class="homepage-role">贵旅出行·文旅推荐官</p><div class="homepage-tags"><span>商务7座</span><span>13年驾龄</span><span>退伍老兵</span></div><p class="homepage-bio">${esc(profileInfo.bio)}</p><div class="homepage-stats"><div><strong>68</strong><span>被关注</span></div><div><strong>37</strong><span>被分享</span></div><div><strong>98.3%</strong><span>好评率</span></div></div></article></div><section class="homepage-store"><div class="homepage-store-heading"><nav class="homepage-filters" role="tablist" aria-label="橱窗分类">${['服务','商品'].map(label=>`<button role="tab" aria-selected="${storefrontFilter===label}" data-storefront-filter="${label}">${label}</button>`).join('')}</nav>${storefrontFilter==='服务'?'<button class="homepage-publish" data-service-new><img src="icons/plus-primary.svg" alt="">发布</button>':''}</div><div class="homepage-products">${storefrontProducts()}</div></section>`}
-function openPersonalHomepage(){storefrontFilter='服务';profileDetail('个人主页',personalHomepageBody());$('#utility').classList.add('personal-homepage');$('#utility-body').scrollTop=0;syncOverlay()}
+function storefrontProducts(){return services.filter(service=>(service.category||'服务')===storefrontFilter).map(service=>`<article class="homepage-product"><button class="homepage-product-open" data-profile-service="${esc(service.id)}" aria-label="查看服务：${esc(service.title)}"></button>${service.image?`<img class="homepage-product-image" src="${esc(service.image)}" alt="${esc(service.title)}">`:'<span class="homepage-product-placeholder">暂无图片</span>'}<div class="homepage-product-copy"><h3><span class="homepage-product-title">${esc(service.title)}</span></h3><p>${esc(service.content)}</p>${service.promotion?'<span class="homepage-promotion-badge">推广商品</span>':''}<div class="homepage-product-bottom"><b><small>￥</small>${Number(service.price).toLocaleString('zh-CN')}<small>/${esc(service.priceUnit||serviceUnit(service.type))}${service.priceFrom?' 起':''}</small></b><div class="homepage-product-manage"><button data-service-delete="${esc(service.id)}" aria-label="删除${esc(service.title)}">删除</button>${service.category==='商品'?'':`<button data-service-edit="${esc(service.id)}">编辑</button>`}</div></div></div></article>`).join('')||`<p class="profile-empty">还没有发布${storefrontFilter}</p>`}
+function personalHomepageBody(){return `<div class="homepage-cover"><img src="${esc(profileInfo.cover)}" alt="个人主页背景"></div><div class="homepage-flow"><article class="homepage-guide">${profileAvatar()}<button type="button" class="icon-button homepage-card-share" data-profile-share aria-label="分享主页"><img src="icons/share-network-primary.svg" alt=""></button><h2>${esc(profileInfo.name)}</h2><p class="homepage-role">贵旅出行·文旅推荐官</p><div class="homepage-tags">${businessCardTagsHTML()}</div><p class="homepage-bio">${esc(profileInfo.bio)}</p><div class="homepage-stats"><div><strong>68</strong><span>被关注</span></div><div><strong>37</strong><span>被分享</span></div><div><strong>98.3%</strong><span>好评率</span></div></div></article></div><section class="homepage-store"><div class="homepage-store-heading"><nav class="homepage-filters" role="tablist" aria-label="橱窗分类">${['服务','商品'].map(label=>`<button role="tab" aria-selected="${storefrontFilter===label}" data-storefront-filter="${label}">${label}</button>`).join('')}</nav>${storefrontFilter==='服务'?'<button class="homepage-publish" data-service-new><img src="icons/plus-primary.svg" alt="">发布</button>':''}</div><div class="homepage-products">${storefrontProducts()}</div></section>`}
+function openPersonalHomepage(category='服务'){storefrontFilter=category==='商品'?'商品':'服务';profileDetail('个人主页',personalHomepageBody());$('#utility').classList.add('personal-homepage');$('#utility-body').scrollTop=0;syncOverlay()}
 function refreshPersonalHomepage(){if($('#utility').open&&$('#utility').classList.contains('personal-homepage')){const scroll=$('#utility-body').scrollTop;$('#utility-body').innerHTML=personalHomepageBody();$('#utility-body').scrollTop=scroll}}
 function profileShareText(){return `${profileInfo.name}｜贵旅出行·文旅推荐官\n${profileInfo.bio}\n\n${services.map(s=>`${s.title} · ￥${s.price}/${s.priceUnit||serviceUnit(s.type)}${s.priceFrom?' 起':''}`).join('\n')}`}
 async function shareProfile(){const text=profileShareText();if(navigator.share){try{await navigator.share({title:`${profileInfo.name}的个人主页`,text});return}catch(error){if(error.name==='AbortError')return}}profileDetail('分享主页',`<p class="profile-subtitle">复制主页介绍，分享给朋友</p><textarea class="profile-share-text" aria-label="主页分享内容" readonly>${esc(text)}</textarea><button class="profile-primary" data-copy-profile>复制分享内容</button><p class="profile-share-status" role="status"></p>`)}
@@ -44,7 +139,7 @@ $('#profile').onclick=()=>switchTab('profile');
 function profileDetail(title,body){genderSheet.hidden=true;utility(title,body);$('#utility').classList.add('profile-detail');syncOverlay();}
 function imageField(name,label,src){return `<label class="mobile-image-picker ${name==='avatar'?'avatar-picker':name==='cover'?'cover-picker':'service-picker'}"><span class="image-picker-label">${label}</span><span class="image-picker-preview ${src?'':'is-empty'}"><img data-image-preview="${name}" class="${name==='avatar'&&src==='images/avatar.jpg'?'default-avatar':''}" ${src?`src="${esc(src)}"`:''} alt="${label}预览"><span class="image-picker-overlay"><img src="icons/camera.svg" alt=""><span>${name==='avatar'?'更换头像':src?'更换图片':'添加图片'}</span></span></span>${name==='avatar'?'<span class="avatar-camera" aria-hidden="true"><img src="icons/camera.svg" alt=""></span>':''}<input type="file" name="${name}" accept="image/*" aria-label="${name==='avatar'?'更换头像':name==='cover'?'上传自定义背景':'选择服务图片'}"></label>`}
 function editProfile(){profileDetail('编辑主页',`<form id="profile-edit-form" class="profile-form">${imageField('avatar','头像',profileInfo.avatar)}<label>名字<input name="name" required maxlength="20" value="${esc(profileInfo.name)}"></label><label>个人简介<textarea name="bio" required maxlength="150" rows="4">${esc(profileInfo.bio)}</textarea></label><section class="cover-editor"><h3>背景图</h3>${imageField('cover','当前背景',profileInfo.cover)}<p class="cover-presets-label">系统背景</p><div class="cover-presets" role="group" aria-label="选择系统背景">${defaultCovers.map(c=>`<button type="button" data-cover-preset="${c.src}" aria-label="选择${c.name}" aria-pressed="${profileInfo.cover===c.src}"><img src="${c.src}" alt="${c.name}"><i aria-hidden="true">✓</i></button>`).join('')}</div></section><button class="profile-primary" type="submit">保存主页</button></form>`)}
-function editService(id){const service=services.find(s=>s.id===id),type=service?.type||'日包车',image=service?.image||'';profileDetail(service?'编辑服务':'发布服务',`<form id="service-edit-form" data-id="${service?.id||''}" class="profile-form" novalidate><div class="publish-details"><div class="publish-type-row"><span>服务类型</span><div class="publish-type-options" role="radiogroup" aria-label="服务类型"><label><input type="radio" name="type" value="日包车" ${type==='日包车'?'checked':''}><span>日包车</span></label><label><input type="radio" name="type" value="点对点包车" ${type==='点对点包车'?'checked':''}><span>点对点包车</span></label></div></div><label class="publish-price-row"><span>价格</span><span class="publish-price-input"><b>¥</b><input name="price" type="text" inputmode="decimal" required placeholder="0.00" value="${service?.price||''}" aria-label="价格（元）"><span data-price-unit>/${serviceUnit(type)}</span></span></label></div><div class="publish-content"><label class="mobile-image-picker service-picker publish-image-picker"><span class="image-picker-preview ${image?'':'is-empty'}"><img data-image-preview="image" ${image?`src="${esc(image)}"`:''} alt="服务图片预览"><span class="image-picker-overlay"><img src="icons/plus.svg" alt=""><span>${image?'更换服务图片':'添加服务图片'}</span></span></span><input type="file" name="image" accept="image/*" aria-label="选择服务图片"></label><input class="publish-title" name="title" required maxlength="40" placeholder="填写服务标题" aria-label="服务标题" value="${esc(service?.title||'')}"><textarea class="publish-description" name="content" required maxlength="300" placeholder="介绍服务流程、时长、个人优势等" aria-label="服务内容">${esc(service?.content||'')}</textarea><div class="publish-content-bottom"><label class="publish-location"><img src="icons/map-pin.svg" alt=""><input name="location" maxlength="30" aria-label="服务地" placeholder="服务地，如：贵阳及周边" value="${esc(service?.location||'')}"></label><button type="button" class="service-ai-button" data-service-ai><img src="icons/sparkle.svg" alt="">AI 帮你写</button></div></div><button class="profile-primary publish-submit" type="submit">${service?'保存修改':'发布'}</button></form>`)}
+function editService(id){const service=services.find(s=>s.id===id),type=service?.type||'日包车',image=service?.image||'';profileDetail(service?'编辑服务':'发布服务',`<form id="service-edit-form" data-id="${service?.id||''}" class="profile-form" novalidate><div class="publish-details"><div class="publish-type-row"><span>服务类型</span><div class="publish-type-options" role="radiogroup" aria-label="服务类型"><label><input type="radio" name="type" value="日包车" ${type==='日包车'?'checked':''}><span>日包车</span></label><label><input type="radio" name="type" value="点对点包车" ${type==='点对点包车'?'checked':''}><span>点对点包车</span></label></div></div><label class="publish-price-row"><span>价格</span><span class="publish-price-input"><b>¥</b><input name="price" type="text" inputmode="decimal" required placeholder="0.00" value="${service?.price||''}" aria-label="价格（元）"><span data-price-unit>/${service?.priceUnit||serviceUnit(type)}</span></span></label></div><div class="publish-content"><label class="mobile-image-picker service-picker publish-image-picker"><span class="image-picker-preview ${image?'':'is-empty'}"><img data-image-preview="image" ${image?`src="${esc(image)}"`:''} alt="服务图片预览"><span class="image-picker-overlay"><img src="icons/plus.svg" alt=""><span>${image?'更换服务图片':'添加服务图片'}</span></span></span><input type="file" name="image" accept="image/*" aria-label="选择服务图片"></label><input class="publish-title" name="title" required maxlength="40" placeholder="填写服务标题" aria-label="服务标题" value="${esc(service?.title||'')}"><textarea class="publish-description" name="content" required maxlength="300" placeholder="介绍服务流程、时长、个人优势等" aria-label="服务内容">${esc(service?.content||'')}</textarea><div class="publish-content-bottom"><label class="publish-location"><img src="icons/map-pin.svg" alt=""><input name="location" maxlength="30" aria-label="服务地" placeholder="服务地，如：贵阳及周边" value="${esc(service?.location||'')}"></label><button type="button" class="service-ai-button" data-service-ai><img src="icons/sparkle.svg" alt="">AI 帮你写</button></div></div><button class="profile-primary publish-submit" type="submit">${service?'保存修改':'发布'}</button></form>`)}
 const customerPresentation={
  airport:{avatar:'images/lake.jpg',tags:['机场接送','专车服务','高客单','高复购'],requests:[],preferences:'偏好专车接送，重视准时接驾'},
  contact:{avatar:'images/system-cover-2.jpg',tags:['车站接送','大件行李'],requests:['携带两件大行李，请确认车辆空间','请提前确认贵阳北站南广场碰面位置'],preferences:'暂无历史偏好记录'},
@@ -93,7 +188,7 @@ if(el.hasAttribute('data-profile-share'))await shareProfile();
 if(el.hasAttribute('data-copy-profile')){const field=$('.profile-share-text'),status=$('.profile-share-status');try{await navigator.clipboard.writeText(field.value);status.textContent='分享内容已复制';el.textContent='已复制'}catch{field.focus();field.select();status.textContent='请长按或使用复制快捷键，复制以上内容'}}
 if(el.dataset.profileOrders){orderFilter=el.dataset.profileOrders;profileDetail('订单列表',ordersBody())}
 if(el.dataset.storefrontFilter){storefrontFilter=el.dataset.storefrontFilter;refreshPersonalHomepage();$('[data-storefront-filter][aria-selected="true"]').focus({preventScroll:true})}
-if(el.dataset.profileService){const service=services.find(s=>s.id===el.dataset.profileService);if(service){showBusinessServiceDetail({title:service.title,price:service.price,priceUnit:service.priceUnit||serviceUnit(service.type),priceFrom:service.priceFrom,detailTitle:service.type,route:service.location||service.title,details:service.content,pricing:`¥${service.price}/${service.priceUnit||serviceUnit(service.type)}${service.priceFrom?' 起':''}`});const cover=$('.business-service-cover');if(service.image)cover.src=service.image;cover.alt=service.title}}
+if(el.dataset.profileService){const service=services.find(s=>s.id===el.dataset.profileService);if(service){if(service.detailImage){showPromotionProductDetail(service);return;}showBusinessServiceDetail({promotion:service.promotion,title:service.id==='scenic'?'按天包车':service.id==='transfer'?'定点包车':service.title,sections:homepageServiceSections[service.id],price:service.price,priceUnit:service.priceUnit||serviceUnit(service.type),priceFrom:service.priceFrom,detailTitle:service.id==='scenic'?'按天包车':service.id==='transfer'?'定点包车':service.type,route:service.location||service.title,details:service.content,pricing:`¥${service.price}/${service.priceUnit||serviceUnit(service.type)}${service.priceFrom?' 起':''}`});const cover=$('.business-service-cover');if(service.image)cover.src=service.image;cover.alt=service.title}}
 
 if(el.dataset.profileRoute){switch(el.dataset.profileRoute){case'tasks':openAllTasks();break;case'customers':openCustomers();break;case'orders':orderFilter='全部';profileDetail('订单列表',ordersBody());break;case'wallet':openWallet();break;case'notifications':openSystemNotifications();break;case'settings':openProfileSettings();break;}}
 if(el.hasAttribute('data-service-new'))editService();if(el.dataset.serviceEdit)editService(el.dataset.serviceEdit);

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "python3 -m http.server 5173 --directory dist",
-    "check": "node --check dist/app.js && node --check dist/profile.js && node --check dist/dashboard.js && node --check dist/trip-plan.js && node --check dist/festival-services.js && node --check dist/weekly-report.js"
+    "check": "node --check dist/app.js && node --check dist/profile.js && node --check dist/dashboard.js && node --check dist/trip-plan.js && node --check dist/festival-services.js && node --check dist/weekly-report.js && node --check dist/task-conversation-records.js && node --check dist/task-timeline.js && node --check dist/task-operation-records.js && node --check dist/task-card-voice.js && node --check dist/product-promotion.js",
+    "test:task-records": "node --test tests/task-operation-records.test.js",
+    "test:task-voice": "node --test tests/task-card-voice.test.js"
   },
   "keywords": [],
   "author": "",

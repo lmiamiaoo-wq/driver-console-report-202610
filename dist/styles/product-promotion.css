@@ -1,0 +1,28 @@
+.promotion-products { flex:none;width:100%;margin:0 0 18px;padding:var(--ai-space-3);background:var(--ai-white);border:1px solid var(--ai-border);border-radius:var(--ai-radius-card);box-shadow:var(--ai-shadow-card);color:var(--ai-ink); }
+.promotion-products-heading { display:flex;align-items:center;justify-content:space-between;gap:var(--ai-space-2);margin-bottom:var(--ai-space-1); }
+.promotion-products-heading h3 { margin:0;font-size:16px;line-height:24px; }
+.promotion-products-heading span { color:var(--ai-muted);font-size:12px;white-space:nowrap; }
+.promotion-product-list { display:grid;gap:var(--ai-space-1); }
+.promotion-product { display:flex;align-items:center;gap:var(--ai-space-2);padding:var(--ai-space-2);min-height:64px;border:1px solid var(--ai-border);border-radius:var(--ai-radius-inset);cursor:pointer; }
+.promotion-product:has(input:checked) { border-color:var(--ai-brand);background:var(--ai-selected); }
+.promotion-product input { flex:none;width:18px;height:18px;margin:0;accent-color:var(--ai-brand);cursor:pointer; }
+.promotion-product-copy { display:grid;gap:4px;min-width:0; }
+.promotion-product-copy strong { font-size:14px;font-weight:500;line-height:21px;overflow-wrap:anywhere; }
+.promotion-product-copy>span { color:var(--ai-brand);font-size:14px;line-height:20px;font-weight:600; }
+.promotion-product:has(input:disabled) { cursor:default; }
+.phone .promotion-products .promotion-confirm { display:block;width:100%;min-height:48px;margin-top:var(--ai-space-2);border:0;border-radius:var(--ai-radius-pill);background:var(--ai-brand);color:var(--ai-white);font-size:16px;font-weight:600;box-shadow:var(--ai-shadow-action); }
+.phone .promotion-products .promotion-confirm:disabled { background:var(--ai-border);color:var(--ai-muted);box-shadow:none;cursor:default; }
+.promotion-home-shortcut { margin:0 0 18px; }
+.promotion-products :is(input,button):focus-visible { outline:2px solid var(--ai-link);outline-offset:3px; }
+
+.promotion-route-long-image { display:block;width:100%;height:auto; }
+.business-transfer-detail .promotion-route-credit { padding:var(--ai-space-4) var(--ai-space-3);text-align:left;color:var(--ai-brand);font-size:14px;line-height:1.8;background:var(--ai-white); }
+
+.promotion-credit-partner { color:var(--ai-brand);display:flex;align-items:center;gap:var(--ai-space-1); }
+.promotion-credit-icon { display:block;width:18px;height:18px;flex:none;background:currentColor;mask:url("../icons/co-creation-platform.svg") center / contain no-repeat;-webkit-mask:url("../icons/co-creation-platform.svg") center / contain no-repeat; }
+.promotion-credit-partner span { min-width:0; }
+
+.homepage-promotion-badge { align-self:flex-start;margin-top:4px;display:inline-flex;align-items:center;flex:none;padding:1px 6px;border-radius:6px;background:var(--ai-selected);color:var(--ai-brand);font-size:11px;line-height:18px;font-weight:500;vertical-align:middle; }
+
+.homepage-product-copy h3 { display:flex;align-items:center;gap:6px; }
+.homepage-product-title { min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
