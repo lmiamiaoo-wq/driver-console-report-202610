@@ -1,3 +1,16 @@
 node_modules/
 .sites-runtime/
 .DS_Store
+
+# 页面预览与验证截图；正式页面资源保存在 dist/ 中。
+/qa/**/*.png
+/qa/**/*.jpg
+/qa/**/*.jpeg
+/qa/**/*.webp
+/artifacts/**/*.png
+/artifacts/**/*.jpg
+/artifacts/**/*.jpeg
+/artifacts/**/*.webp
+/*-preview.png
+/festival-card-refinement.png
+/lost-hat-card-updated.png

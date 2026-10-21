@@ -1,5 +1,7 @@
 # 头像名片与服务对话 QA
 
+说明：以下为历史验证记录，文中提及的 `qa/` 截图已于 2026-10-21 清理，不再随仓库保存；测试与文字验证结论保留。
+
 - Source visual truth: `/Users/pengpeng/Desktop/截屏2026-10-12 20.58.25.png` (177 × 62 button crop); `/var/folders/_9/rrf9h00s75l4hl88c1qbdkvr0000gn/T/TemporaryItems/NSIRD_screencaptureui_QY2fVQ/截屏2026-10-12 21.02.40.png` (282 × 279 card crop).
 - Implementation: `qa/avatar-business-card-final.png`, `qa/avatar-business-card-phone.png`, `qa/qingyan-service-preview.png`.
 - Combined comparison: `qa/avatar-reference-comparison.png`. Reference and implementation card placed side by side; 358 CSS px implementation card normalized to 282 px reference width. Source screenshot density is unspecified, treated as 1×. Browser screenshot 1280 × 720 at 1×, phone content 390 × 684 CSS px. Earlier check used a 490 × 792 viewport.
