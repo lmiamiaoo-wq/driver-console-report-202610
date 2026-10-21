@@ -1,0 +1,4 @@
+#!/bin/sh
+case "$2" in
+  ""|template) node scripts/changelog.cjs prepare "$1" ;;
+esac

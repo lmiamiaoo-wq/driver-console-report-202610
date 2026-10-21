@@ -2,6 +2,12 @@
 
 移动端交互原型，无需构建。
 
+## 更新日志与提交
+
+首次克隆后执行 `npm run hooks:install` 启用本仓库的提交检查。每次修改后，助手按 [AGENTS.md](AGENTS.md) 检查实际 Git Diff，自动整理中文 [CHANGELOG.md](CHANGELOG.md)，同日追加去重并保留历史。分类为新增功能、交互优化、视觉调整、问题修复，仅保留非空分类；每条说明涉及的页面或模块及具体变化。
+
+提交前将实现与日志一起暂存，执行 `npm run changelog:check` 检查；`npm run changelog:message` 根据新增日志生成简洁中文候选说明。不提供提交说明时，Git Hook 自动填入候选说明；显式提供的中文说明会保留。Hooks 只检查格式、历史保留和同次提交，产品语义由助手依据 Diff 核实。相关检查可运行 `npm run test:changelog`。只有明确要求更新 GitHub 时才 push。
+
 ## Cloudflare Pages 发布
 
 司导端独立项目：`tourism-driver-console-report-2610`。
