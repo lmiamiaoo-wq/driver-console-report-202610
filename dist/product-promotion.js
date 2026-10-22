@@ -7,9 +7,9 @@ function promotionCatalog(){
 }
 function promotionPrice(product){return `¥${Number(product.price).toLocaleString('zh-CN')}/${product.unit}`;}
 function startProductPromotion(text){
- rememberPage();
+ if(activeTab!=='ai')switchTab('ai');
  if(open)closeChat();
- conversationPage=true;applyPageSurface('ai',false);aiTask=null;
+ conversationPage=false;applyPageSurface('ai',false);aiTask=null;
  const owner={id:'promotion-'+Date.now(),type:'产品推广',title:'让更多人推广我的产品',date:new Date().toLocaleString('zh-CN',{hour12:false}),messages:[{role:'user',text}],promotion:{products:promotionCatalog(),selected:[],confirmed:false}};
  reviewConversation=owner;reviewConversations.push(owner);
  queueAIReply(owner.messages,'可以通过**云码通**让更多人推广你的产品，成交后按商品成交价的 **7%** 支付销售佣金。\n选择下方想推广的商品或服务，可以多选。',owner,false,{kind:'promotion-options'});
